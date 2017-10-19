@@ -1,0 +1,146 @@
+[
+  {
+    "level": 0,
+    "label": "level zero",
+    "description": "something something",
+    "elements": [
+      {
+        "x": 0.00033,
+        "y": 0.0001,
+        "imgPath": "logos/reactlogo.png"
+      },
+      {
+        "x": -1.013,
+        "y": 1.12,
+        "color": "#cba",
+        "imgPath": "logos/chromelogo.png"
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "label": "level one",
+    "description": "something something",
+    "elements": [
+      {
+        "x": 0.00033,
+        "y": 0.0001,
+        "imgPath": "logos/reactlogo.png"
+      },
+      {
+        "x": -1.013,
+        "y": 1.12,
+        "color": "#cba",
+        "imgPath": "logos/chromelogo.png"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "label": "level two",
+    "description": "something something",
+    "elements": [
+      {
+        "x": 0.00033,
+        "y": 0.0001,
+        "imgPath": "logos/reactlogo.png"
+      },
+      {
+        "x": -1.013,
+        "y": 1.12,
+        "color": "#cba",
+        "imgPath": "logos/chromelogo.png"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "label": "level two",
+    "description": "something something",
+    "elements": [
+      {
+        "x": 0.00033,
+        "y": 0.0001,
+        "imgPath": "logos/reactlogo.png"
+      },
+      {
+        "x": -1.013,
+        "y": 1.12,
+        "color": "#cba",
+        "imgPath": "logos/chromelogo.png"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "label": "level two",
+    "description": "something something",
+    "elements": [
+      {
+        "x": 0.00033,
+        "y": 0.0001,
+        "imgPath": "logos/reactlogo.png"
+      },
+      {
+        "x": -1.013,
+        "y": 1.12,
+        "color": "#cba",
+        "imgPath": "logos/chromelogo.png"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "label": "level two",
+    "description": "something something",
+    "elements": [
+      {
+        "x": 0.00033,
+        "y": 0.0001,
+        "imgPath": "logos/reactlogo.png"
+      },
+      {
+        "x": -1.013,
+        "y": 1.12,
+        "color": "#cba",
+        "imgPath": "logos/chromelogo.png"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "label": "level two",
+    "description": "something something",
+    "elements": [
+      {
+        "x": 0.00033,
+        "y": 0.0001,
+        "imgPath": "logos/reactlogo.png"
+      },
+      {
+        "x": -1.013,
+        "y": 1.12,
+        "color": "#cba",
+        "imgPath": "logos/chromelogo.png"
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "label": "level two",
+    "description": "something something",
+    "elements": [
+      {
+        "x": 0.00033,
+        "y": 0.0001,
+        "imgPath": "logos/reactlogo.png"
+      },
+      {
+        "x": -1.013,
+        "y": 1.12,
+        "color": "#cba",
+        "imgPath": "logos/chromelogo.png"
+      }
+    ]
+  }
+]
