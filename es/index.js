@@ -10,6 +10,22 @@ import Hammer from 'hammerjs';
 console.log('hello tech journey');
 
 
+/**
+ * @author Robert Penner, http://gizma.com/easing
+ * @param t
+ * @param b
+ * @param c
+ * @param d
+ * @returns {*}
+ */
+Math.easeInOutQuad = function (t, b, c, d) {
+  t /= d/2;
+  if (t < 1) return c/2*t*t + b;
+  t--;
+  return -c/2 * (t*(t-2) - 1) + b;
+};
+
+
 $(document).ready(function() {
 
   var journey = new Journey({
@@ -29,6 +45,9 @@ $(document).ready(function() {
     null,
     (data) => {
       journey.levels = data;
+
+      $('#levelTitle').html(journey.levels[0].label);
+      $('#levelDesc').html(journey.levels[0].description);
 
       // TODO show loading graphics indicator here
 
@@ -146,28 +165,41 @@ $(document).ready(function() {
     const maxLevel = (journey.levels.length * journey.levelRange - journey.levelThreshold);
     const deltaZoom = e.originalEvent.deltaY * journey.speedFactor;
 
-    if (deltaZoom < 0 && (journey.zoomLevel + deltaZoom) >= journey.minZoomLevel
-      || deltaZoom > 0 && (journey.zoomLevel + deltaZoom) <= maxLevel - journey.levelThreshold) {
+    if (!journey.zooming && (deltaZoom < 0 && (journey.zoomLevel + deltaZoom) >= journey.minZoomLevel
+      || deltaZoom > 0 && (journey.zoomLevel + deltaZoom) <= maxLevel - journey.levelThreshold)) {
 
-      journey.zoomLevel += deltaZoom;
+      journey.zooming = true;
 
-      journey.render();
 
-      if (fadeTimeout) {
-        clearTimeout(fadeTimeout);
-      }
+      var step = 0;
+      const currentZoomLevel = journey.zoomLevel;
 
-      $('.welcome').addClass('faded');
-      $('.info-block').addClass('faded');
-      $('.footer').addClass('faded');
+      $('.fade').addClass('in');
 
-      fadeTimeout = setTimeout(
+      journey.accelerateZoom = setInterval(
         () => {
-          $('.welcome').removeClass('faded');
-          $('.info-block').removeClass('faded');
-          $('.footer').removeClass('faded');
+
+          step++;
+          let currentDelta = Math.easeInOutQuad(step, 1, journey.levelRange, 100);
+
+          journey.zoomLevel = currentZoomLevel + currentDelta * (deltaZoom > 0 ? 1 : -1);
+
+          journey.render();
+
+          if (step > 100) {
+
+            clearInterval(journey.accelerateZoom);
+            journey.zooming = false;
+            journey.zoomLevel = currentZoomLevel + journey.levelRange * (deltaZoom > 0 ? 1 : -1);
+
+            let level = Math.floor(journey.zoomLevel/journey.levelRange);
+            $('.fade').removeClass('in');
+            $('#levelTitle').html(journey.levels[level].label);
+            $('#levelDesc').html(journey.levels[level].description);
+          }
+
         },
-        1000
+        10
       );
 
     }

@@ -16,7 +16,7 @@
 
 <body>
 
-  <div class="welcome">
+  <div class="welcome fade">
     <h1>Take a dive into technology stack</h1>
     <h4>Pinch, zoom or scroll to move around</h4>
   </div>
@@ -25,14 +25,21 @@
     <canvas id="cvs" width="600" height="600"/>
   </div>
 
-  <div class="info-block">
+  <div class="info-block fade">
     <div class="i18n-block">
       <strong>EN</strong> | PL
     </div>
     <i class="material-icons">info_outline</i>
   </div>
 
-  <div class="footer">
+  <div class="level-description-block fade">
+    <div class="content">
+      <h3 id="levelTitle"></h3>
+      <p id="levelDesc"></p>
+    </div>
+  </div>
+
+  <div class="footer fade">
     <a href="http://thebeaverhead.com" title="Link to The Beaverhead homepage.">
       <img src="tbh_logo.png" title="The Beaverhead"/>
     </a>

@@ -1,8 +1,17 @@
 
 * { margin:0; padding:0; } /* to remove the top and left whitespace */
 
-.faded {
-  opacity: 0.1;
+
+.fade {
+  -webkit-transition: opacity 0.7s;
+  -moz-transition: opacity 0.7s;
+  -ms-transition: opacity 0.7s;
+  -o-transition: opacity 0.7s;
+  transition: opacity 0.7s;
+
+  &.in {
+    opacity: 0.1;
+  }
 }
 
 html, body {
@@ -16,12 +25,6 @@ canvas { display:block; }
   position: absolute;
   z-index: 1;
   width: 100%;
-
-  -webkit-transition: opacity 0.7s;
-  -moz-transition: opacity 0.7s;
-  -ms-transition: opacity 0.7s;
-  -o-transition: opacity 0.7s;
-  transition: opacity 0.7s;
 }
 
 h1 {
@@ -45,12 +48,6 @@ h4 {
   position: absolute;
   bottom: 20px;
   right: 20px;
-
-  -webkit-transition: opacity 0.7s;
-  -moz-transition: opacity 0.7s;
-  -ms-transition: opacity 0.7s;
-  -o-transition: opacity 0.7s;
-  transition: opacity 0.7s;
 }
 
 .footer img {
@@ -62,11 +59,6 @@ h4 {
   top: 20px;
   right: 20px;
 
-  -webkit-transition: opacity 0.7s;
-  -moz-transition: opacity 0.7s;
-  -ms-transition: opacity 0.7s;
-  -o-transition: opacity 0.7s;
-  transition: opacity 0.7s;
 }
 
 .info-block .material-icons {
@@ -76,4 +68,20 @@ h4 {
 
 .i18n-block {
   display: inline;
+}
+
+
+.level-description-block {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+
+  .content {
+    margin: 0 auto;
+    width: 80%
+  }
+
+  h2 {
+    text-align: center;
+  }
 }
