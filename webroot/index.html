@@ -6,8 +6,8 @@
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta name="msapplication-tap-highlight" content="no" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons:300,400,500" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="style.css"/>
 
@@ -16,9 +16,16 @@
 
 <body>
 
-  <div class="welcome fade">
-    <h1>Take a dive into technology stack</h1>
-    <h4>Pinch, zoom or scroll to move around</h4>
+  <div class="welcome" id="welcome">
+    <div>
+      <h1>Take a dive&shy; into technology stack</h1>
+      <h4>Pinch, zoom or scroll to move around</h4>
+      <p>
+        <button type="button" id="start">
+          <i class="material-icons">play_circle_outline</i>
+        </button>
+      </p>
+    </div>
   </div>
 
   <div id="app" style="display: flex; justify-content: center; align-items: center;">
@@ -27,9 +34,13 @@
 
   <div class="info-block fade">
     <div class="i18n-block">
-      <strong>EN</strong> | PL
+      <button type="button" class="lang-btn" value="en-UK">EN</button> |
+      <button type="button" class="lang-btn" value="pl-PL">PL</button>
     </div>
-    <i class="material-icons">info_outline</i>
+    <button type="button" id="info">
+      <i class="material-icons">info_outline</i>
+    </button>
+
   </div>
 
   <div class="level-description-block fade">

@@ -16,6 +16,7 @@
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.1",
     "less-watch-compiler": "^1.4.2",
+    "material-components-web": "^0.23.0",
     "object-assign": "^4.1.1"
   },
   "devDependencies": {

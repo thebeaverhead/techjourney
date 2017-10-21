@@ -21,7 +21,7 @@ export default class Journey {
     this.showItemPts = props.showItemPts;
     this.zoomLevel = props.zoomLevel;
     this.minZoomLevel = props.minZoomLevel;
-
+    this.lang = props.lang;
 
     this.ctx = this.canvas.getContext('2d');
   }
@@ -217,7 +217,7 @@ export default class Journey {
     ctx.fillStyle="rgba(0, 0, 0, 1)";
 
     ctx.fillText(
-      this.levels[currentLevel].label,
+      this.levels[currentLevel].label[this.lang],
       scalePosX + 15,
       (1 + currentLevel) * scaleStep + scaleTop
     );
@@ -232,7 +232,7 @@ export default class Journey {
       ctx.fillStyle="rgba(0, 0, 0, " + alpha +")";
 
       ctx.fillText(
-        this.levels[currentLevel-1].label,
+        this.levels[currentLevel-1].label[this.lang],
         scalePosX + 15,
         (1 + currentLevel-1) * scaleStep + scaleTop
       );
@@ -246,7 +246,7 @@ export default class Journey {
       ctx.textBaseline = "middle";
       ctx.fillStyle="rgba(0, 0, 0, " + alpha +")";
       ctx.fillText(
-        this.levels[currentLevel+1].label,
+        this.levels[currentLevel+1].label[this.lang],
         scalePosX + 15,
         (1 + currentLevel+1) * scaleStep + scaleTop
       );

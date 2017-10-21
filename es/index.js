@@ -26,7 +26,29 @@ Math.easeInOutQuad = function (t, b, c, d) {
 };
 
 
+
+
+/**
+ *
+ */
 $(document).ready(function() {
+
+  /**
+   *
+   * @param lang
+   * @param lvl
+   */
+  function updateDescription(lang, lvl) {
+
+    if (!lvl) {
+      lvl = Math.floor(journey.zoomLevel/journey.levelRange);
+    }
+
+    $('#levelTitle').html(journey.levels[lvl].label[lang]);
+    $('#levelDesc').html(journey.levels[lvl].description[lang]);
+  }
+
+
 
   var journey = new Journey({
     canvas: document.getElementById('cvs'),
@@ -36,8 +58,27 @@ $(document).ready(function() {
     imgResizeFactor: $('#imgResizeFactor').val() * 1,
     speedFactor: $('#speedFactor').val() * 1,
     zoomLevel: 500,
-    minZoomLevel: 500
+    minZoomLevel: 500,
+    lang: navigator.language
   });
+
+  console.log(journey);
+
+  var langSelected = false;
+
+  $('.lang-btn').each((i, e) =>{
+
+    console.log(e);
+    if ($(e).val() == journey.lang) {
+      $(e).addClass('active');
+      langSelected = true;
+    }
+  });
+
+  if (!langSelected) {
+    journey.lang = 'en-UK';
+    $(".lang-btn[value='" + journey.lang + "']").addClass('active');
+  }
 
   // TODO show "data loading" indicator here
   $.getJSON(
@@ -46,8 +87,7 @@ $(document).ready(function() {
     (data) => {
       journey.levels = data;
 
-      $('#levelTitle').html(journey.levels[0].label);
-      $('#levelDesc').html(journey.levels[0].description);
+      updateDescription(journey.lang);
 
       // TODO show loading graphics indicator here
 
@@ -103,11 +143,45 @@ $(document).ready(function() {
   hammer.get('pinch').set({enable: true});
 
 
+  /**
+   *
+   */
   hammer.on('pinch', (e) => {
     console.log(e);
   });
 
+  /**
+   *
+   */
+  $("#start").click(() => {
+    $('#welcome').hide();
+  });
 
+
+  /**
+   *
+   */
+  $('#info').click(() => {
+    $('#welcome').show();
+  });
+
+  /**
+   *
+   */
+  $(".lang-btn").click((e) => {
+    $('.lang-btn.active').removeClass('active');
+    $(e.target).addClass('active');
+
+    journey.lang = $(e.target).val();
+
+    updateDescription(journey.lang);
+    journey.render();
+  });
+
+
+  /**
+   *
+   */
   $('#levelRange').change(() => {
     journey.levelRange = $('#levelRange').val() * 1;
     journey.render();
@@ -194,8 +268,8 @@ $(document).ready(function() {
 
             let level = Math.floor(journey.zoomLevel/journey.levelRange);
             $('.fade').removeClass('in');
-            $('#levelTitle').html(journey.levels[level].label);
-            $('#levelDesc').html(journey.levels[level].description);
+
+            updateDescription(journey.lang);
           }
 
         },
@@ -213,7 +287,7 @@ function onWindowResize() {
     journey.canvas.width = window.innerWidth;
     journey.canvas.height = window.innerHeight;
 
-    journey.ctx = app.canvas.getContext('2d');
+    journey.ctx = journey.canvas.getContext('2d');
     journey.render();
   };
 

@@ -1,14 +1,26 @@
+@screen-sm: 768px;
+* {
+  margin:0; padding:0;
 
-* { margin:0; padding:0; } /* to remove the top and left whitespace */
+} /* to remove the top and left whitespace */
 
+*:focus {
+  outline: none;
+}
+
+.transition (@value1,@value2:X,...)
+{
+  @value: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+
+  -webkit-transition: @value;
+  -moz-transition: @value;
+  -ms-transition: @value;
+  -o-transition: @value;
+  transition: @value;
+}
 
 .fade {
-  -webkit-transition: opacity 0.7s;
-  -moz-transition: opacity 0.7s;
-  -ms-transition: opacity 0.7s;
-  -o-transition: opacity 0.7s;
-  transition: opacity 0.7s;
-
+  .transition(opacity 0.7s);
   &.in {
     opacity: 0.1;
   }
@@ -21,15 +33,55 @@ html, body {
 
 canvas { display:block; }
 
-.welcome {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
+button {
+  border: none;
+  background: none;
+  font-size: initial;
+  cursor: pointer;
+  font-family: Roboto;
 }
 
-h1 {
-  text-align: center;
-  margin-top: 20px;
+.welcome {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, #d5cbef, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 400;
+  }
+
+  h4 {
+    font-weight: 300;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  button {
+    margin-top: 2em;
+  }
+
+  .material-icons {
+    font-size: 4em;
+    text-shadow: 2px 2px 3px rgba(0,0,0,.2);
+
+    .transition(text-shadow 0.3s );
+
+    &:hover, &:active {
+      cursor: pointer;
+      text-shadow: 1px 1px 3px rgba(0,0,0,.2);
+    }
+
+  }
 }
 
 h4 {
@@ -46,12 +98,16 @@ h4 {
 
 .footer {
   position: absolute;
-  bottom: 20px;
   right: 20px;
-}
+  bottom: 10px;
 
-.footer img {
-  width: 50px;
+  @media (min-width: @screen-sm) {
+    bottom: 20px;
+  }
+
+  img {
+    width: 50px;
+  }
 }
 
 .info-block {
@@ -59,11 +115,23 @@ h4 {
   top: 20px;
   right: 20px;
 
-}
+  button {
+    padding-bottom: 2px;
+  }
 
-.info-block .material-icons {
-  vertical-align: bottom;
-  font-size: 20px;
+  .lang-btn {
+
+    &.active {
+      border-bottom: 1px solid;
+    }
+
+  }
+
+  .material-icons {
+    vertical-align: bottom;
+    font-size: 20px;
+  }
+
 }
 
 .i18n-block {
@@ -73,15 +141,27 @@ h4 {
 
 .level-description-block {
   position: absolute;
-  bottom: 20px;
   width: 100%;
+  bottom: 40px;
+
+  @media (min-width: @screen-sm) {
+    width: 80%;
+  }
+
 
   .content {
     margin: 0 auto;
-    width: 80%
+    width: 80%;
+
   }
 
-  h2 {
-    text-align: center;
+  h3 {
+    margin-bottom: 10px;
+    font-weight: 400;
+
+  }
+
+  p {
+    font-weight: 300;
   }
 }
