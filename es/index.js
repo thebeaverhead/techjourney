@@ -38,14 +38,21 @@ $(document).ready(function() {
    * @param lang
    * @param lvl
    */
-  function updateDescription(lang, lvl) {
+  function updateDescription(lang, item, lvl) {
 
     if (!lvl) {
       lvl = Math.floor(journey.zoomLevel/journey.levelRange);
     }
 
-    $('#levelTitle').html(journey.levels[lvl].label[lang]);
-    $('#levelDesc').html(journey.levels[lvl].description[lang]);
+    let label = journey.levels[lvl].label[lang];
+    let desc = journey.levels[lvl].description[lang];
+
+    if (item) {
+      label += " &gt; " + item.label;
+    }
+
+    $('#levelTitle').html(label);
+    $('#levelDesc').html(desc);
   }
 
 
@@ -165,6 +172,71 @@ $(document).ready(function() {
     $('#welcome').show();
   });
 
+
+  /**
+   *
+   */
+  $('#cvs').mousemove((e) =>  {
+    let x = e.clientX;
+    let y = e.clientY;
+
+    const item = journey.getItemXY(x, y);
+    if (item) {
+      $('#cvs').css('cursor', 'pointer');
+    }
+    else {
+      $('#cvs').css('cursor', 'default');
+    }
+  });
+
+
+  /**
+   *
+   */
+  $('#cvs').click((e) =>  {
+    let x = e.clientX;
+    let y = e.clientY;
+
+    const item = journey.getItemXY(x, y);
+
+    updateDescription(journey.lang, item);
+
+    if (item || journey.selectedItem) {
+
+      var previousItem = journey.selectedItem;
+      journey.selectedItem = item;
+
+      var step = 0;
+      if (item) {
+        item.highlightLevel = item.highlightLevel ? item.highlightLevel : 0;
+      }
+
+      var highlightInterval = setInterval(
+        () => {
+
+          step++;
+
+          if (item) {
+            item.highlightLevel += 2;
+          }
+
+          if (previousItem) {
+            previousItem.highlightLevel -= 2;
+          }
+          journey.render();
+
+          if (step >= 5) {
+            clearInterval(highlightInterval);
+          }
+
+        },
+        10
+      );
+    }
+  });
+
+
+
   /**
    *
    */
@@ -174,8 +246,9 @@ $(document).ready(function() {
 
     journey.lang = $(e.target).val();
 
-    updateDescription(journey.lang);
     journey.render();
+    updateDescription(journey.lang);
+
   });
 
 

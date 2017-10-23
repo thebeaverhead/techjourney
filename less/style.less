@@ -8,8 +8,7 @@
   outline: none;
 }
 
-.transition (@value1,@value2:X,...)
-{
+.transition (@value1,@value2:X,...) {
   @value: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
 
   -webkit-transition: @value;
@@ -51,6 +50,11 @@ button {
   justify-content: center;
   align-items: center;
 
+  .transition(background 2s);
+
+  &.tego {
+    background: radial-gradient(ellipse at center, #ffffff 16%, #FAFAFA 42%, #F7F6F6 59%, #f2efef 100%); /* w3c */
+  }
 
   h1 {
     text-align: center;

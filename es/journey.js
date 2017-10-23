@@ -58,6 +58,26 @@ export default class Journey {
   }
 
 
+  /**
+   *
+   * @param data
+   */
+  grasyscaleImage(image) {
+
+    var d = image.data;
+    for (var i=0; i<d.length; i+=4) {
+      var r = d[i];
+      var g = d[i+1];
+      var b = d[i+2];
+      // CIE luminance for the RGB
+      // The human eye is bad at seeing red and blue, so we de-emphasize them.
+      var v = 0.2126*r + 0.7152*g + 0.0722*b;
+      d[i] = d[i+1] = d[i+2] = v
+    }
+
+    return image;
+  }
+
 
   /**
    *
@@ -68,8 +88,9 @@ export default class Journey {
     const canvas = this.canvas;
     const ctx = this.ctx;
 
+    console.log(item.highlightLevel);
     let n = zoomLevel * this.zoomFactor;
-    let imgResizeFactor = this.imgResizeFactor;
+    let imgResizeFactor = this.imgResizeFactor * (item.highlightLevel ? item.highlightLevel : 1);
 
     let a = item.y / item.x;
     let ppx = item.x + n;
@@ -135,7 +156,21 @@ export default class Journey {
       ctx.closePath();
     }
 
+
     ctx.restore();
+
+    item.screenX = newImagePosX + cvsCenterX;
+    item.screenY = newImagePosY - cvsCenterY;
+
+    item.screenW = ~~(newImageWidth);
+    item.screenH = ~~(newImageHeight);
+
+    let circle = new Path2D();
+    //circle.moveTo(40, 100);
+    circle.rect(item.screenX, item.screenY, item.screenW, item.screenH);
+    ctx.fillColor = '#bca';
+    ctx.stroke(circle);
+
 
   }
 
@@ -279,6 +314,32 @@ export default class Journey {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    /**
+     *
+     */
+
+
+
+    // Add colors
+    let grd = ctx.createRadialGradient(
+      this.canvas.width/2,
+      this.canvas.height/2,
+      0.000,
+      this.canvas.width/2,
+      this.canvas.height/2,
+      this.canvas.height/2,
+    );
+
+    //grd.addColorStop(0.435, 'rgba(255, 255, 255, 1.000)');
+    //grd.addColorStop(1.000, 'rgba(242, 239, 239, 1.000)');
+
+    grd.addColorStop(0.435, 'rgba(255, 255, 255, 1.000)');
+    grd.addColorStop(1.000, 'rgba(242, 239, 239, 1.000)');
+
+    // Fill with gradient
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
     this.renderWireframe();
 
     this.renderScale();
@@ -328,4 +389,28 @@ export default class Journey {
 
   }
 
+
+  /**
+   *
+   * @param x
+   * @param y
+   * @returns {*}
+   */
+  getItemXY(x, y) {
+    const currentLevel = Math.floor(this.zoomLevel / this.levelRange);
+    const levelObjects = this.levels[currentLevel].elements;
+
+    for (let i = 0; i < levelObjects.length; i++) {
+      const obj = levelObjects[i];
+
+      if (
+        x >= obj.screenX  && (obj.screenX + obj.screenW) > x
+        && obj.screenY <= y && (obj.screenY + obj.screenH) > y
+      ) {
+        return obj;
+      }
+    }
+
+    return null;
+  }
 }
