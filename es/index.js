@@ -155,7 +155,11 @@ $(document).ready(function() {
    *
    */
   hammer.on('pinch', (e) => {
+
+    e.preventDefault();
     console.log(e);
+
+    onZoom(e.deltaX * journey.speedFactor, journey.levelRange);
   });
 
   /**
@@ -195,6 +199,7 @@ $(document).ready(function() {
    *
    */
   $('#cvs').click((e) =>  {
+
     let x = e.clientX;
     let y = e.clientY;
 
@@ -234,6 +239,18 @@ $(document).ready(function() {
         10
       );
     }
+    else {
+      console.log(x, y);
+      const level = journey.getLevelXY(x, y);
+
+      if (level) {
+        const currentLevelZoom = (1 + Math.floor(journey.zoomLevel / journey.levelRange)) * journey.levelRange;
+        const levelZoom = (level.level + 1) * journey.levelRange;
+
+        const deltaZoom = levelZoom - currentLevelZoom > 0 ? 1 : -1;
+        onZoom(deltaZoom, deltaZoom * (levelZoom - currentLevelZoom));
+      }
+    }
   });
 
 
@@ -251,6 +268,56 @@ $(document).ready(function() {
     updateDescription(journey.lang);
 
   });
+
+
+  /**
+   *
+   * @param deltaZoom
+   */
+  function onZoom(deltaZoom, levelRange) {
+
+    const maxLevel = (journey.levels.length * journey.levelRange - journey.levelThreshold);
+
+    if (!journey.zooming
+        && (deltaZoom < 0 && (journey.zoomLevel + deltaZoom) >= journey.minZoomLevel
+        || deltaZoom > 0 && (journey.zoomLevel + deltaZoom) <= maxLevel - journey.levelThreshold)) {
+
+      journey.zooming = true;
+
+
+      var step = 0;
+      const currentZoomLevel = journey.zoomLevel;
+
+      $('.fade').addClass('in');
+
+      journey.accelerateZoom = setInterval(
+        () => {
+
+          step++;
+          let currentDelta = Math.easeInOutQuad(step, 1, levelRange, 100);
+
+          journey.zoomLevel = currentZoomLevel + currentDelta * (deltaZoom > 0 ? 1 : -1);
+
+          journey.render();
+
+          if (step > 100) {
+
+            clearInterval(journey.accelerateZoom);
+            journey.zooming = false;
+            journey.zoomLevel = currentZoomLevel + levelRange * (deltaZoom > 0 ? 1 : -1);
+
+            let level = Math.floor(journey.zoomLevel/levelRange);
+            $('.fade').removeClass('in');
+
+            updateDescription(journey.lang);
+          }
+
+        },
+        10
+      );
+
+    }
+  }
 
 
   /**
@@ -310,47 +377,10 @@ $(document).ready(function() {
   function onWheel(e) {
     e.preventDefault();
 
-    const maxLevel = (journey.levels.length * journey.levelRange - journey.levelThreshold);
+
     const deltaZoom = e.originalEvent.deltaY * journey.speedFactor;
 
-    if (!journey.zooming && (deltaZoom < 0 && (journey.zoomLevel + deltaZoom) >= journey.minZoomLevel
-      || deltaZoom > 0 && (journey.zoomLevel + deltaZoom) <= maxLevel - journey.levelThreshold)) {
-
-      journey.zooming = true;
-
-
-      var step = 0;
-      const currentZoomLevel = journey.zoomLevel;
-
-      $('.fade').addClass('in');
-
-      journey.accelerateZoom = setInterval(
-        () => {
-
-          step++;
-          let currentDelta = Math.easeInOutQuad(step, 1, journey.levelRange, 100);
-
-          journey.zoomLevel = currentZoomLevel + currentDelta * (deltaZoom > 0 ? 1 : -1);
-
-          journey.render();
-
-          if (step > 100) {
-
-            clearInterval(journey.accelerateZoom);
-            journey.zooming = false;
-            journey.zoomLevel = currentZoomLevel + journey.levelRange * (deltaZoom > 0 ? 1 : -1);
-
-            let level = Math.floor(journey.zoomLevel/journey.levelRange);
-            $('.fade').removeClass('in');
-
-            updateDescription(journey.lang);
-          }
-
-        },
-        10
-      );
-
-    }
+    onZoom(deltaZoom, journey.levelRange);
   }
 
 /**

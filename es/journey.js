@@ -234,6 +234,12 @@ export default class Journey {
 
     for (let i = 0; i < itemsCount; i++) {
 
+      const level = this.levels[i];
+      level.screenX = scalePosX - 8;
+      level.screenY = (i * scaleStep) + scaleTop - 8;
+      level.screenW = 16;
+      level.screenH = 16;
+
       let circle = new Path2D();
       //circle.moveTo(40, 100);
       circle.arc(
@@ -463,6 +469,30 @@ return;
         && obj.screenY <= y && (obj.screenY + obj.screenH) > y
       ) {
         return obj;
+      }
+    }
+
+    return null;
+  }
+
+
+  /**
+   *
+   * @param x
+   * @param y
+   * @returns {*}
+   */
+  getLevelXY(x, y) {
+
+    for (let i = 0; i < this.levels.length; i++) {
+      const level = this.levels[i];
+
+      console.log(level.screenX, level.screenY );
+      if (
+        x >= level.screenX && (level.screenX + level.screenW) > x
+        && level.screenY <= y && (level.screenY + level.screenH) > y
+      ) {
+        return level;
       }
     }
 
