@@ -201,12 +201,12 @@ $(document).ready(function() {
 
     updateDescription(journey.lang, item);
 
-    if (item || journey.selectedItem) {
+    if ((item || journey.selectedItem) && item != journey.selectedItem) {
 
       var previousItem = journey.selectedItem;
       journey.selectedItem = item;
 
-      var step = 0;
+      var step = 1;
       if (item) {
         item.highlightLevel = item.highlightLevel ? item.highlightLevel : 0;
       }
@@ -217,15 +217,15 @@ $(document).ready(function() {
           step++;
 
           if (item) {
-            item.highlightLevel += 2;
+            item.highlightLevel = Math.easeInOutQuad(step, 1, 1.5, 50);
           }
 
           if (previousItem) {
-            previousItem.highlightLevel -= 2;
+            previousItem.highlightLevel = 3.5 - Math.easeInOutQuad(step, 1, 1.5, 50);
           }
           journey.render();
 
-          if (step >= 5) {
+          if (step > 50) {
             clearInterval(highlightInterval);
           }
 

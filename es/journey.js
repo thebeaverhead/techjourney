@@ -88,7 +88,6 @@ export default class Journey {
     const canvas = this.canvas;
     const ctx = this.ctx;
 
-    console.log(item.highlightLevel);
     let n = zoomLevel * this.zoomFactor;
     let imgResizeFactor = this.imgResizeFactor * (item.highlightLevel ? item.highlightLevel : 1);
 
@@ -115,6 +114,9 @@ export default class Journey {
 
     let newImageWidth = ~~(img.width * zoomLevel * imgResizeFactor);
     let newImageHeight = ~~(img.height * zoomLevel * imgResizeFactor);
+    let resizeFactorDeltaX = (newImageWidth - (~~(img.width * zoomLevel * this.imgResizeFactor))) / 2;
+    let resizeFactorDeltaY = (newImageHeight - (~~(img.height * zoomLevel * this.imgResizeFactor))) / 2;
+
 
     let newImagePosX = ppx;// - newImageWidth / 2;
     let newImagePosY = dppy;// - newImageHeight / 2
@@ -122,11 +124,18 @@ export default class Journey {
     if (item.x >= 0 && item.y >= 0) {
       // I
       newImagePosY = dppy - newImageHeight;
+
+      newImagePosX -= resizeFactorDeltaX;
+      newImagePosY += resizeFactorDeltaY;
     }
     else if (item.x < 0 && item.y >= 0) {
       // II
       newImagePosX = ppx - newImageWidth;
       newImagePosY = dppy - newImageHeight;
+
+      //
+      newImagePosX += resizeFactorDeltaX;
+      newImagePosY += resizeFactorDeltaY * 2;
     }
     else if (item.x >= 0 && item.y < 0) {
       // III
@@ -135,6 +144,16 @@ export default class Journey {
     else if (item.x < 0 && item.y < 0) {
       // IV
       newImagePosX = ppx - newImageWidth;
+    }
+
+
+
+    if (item.highlightLevel) {
+
+
+      console.log(resizeFactorDeltaX);
+
+
     }
 
     ctx.drawImage(
@@ -235,7 +254,7 @@ export default class Journey {
     ctx.fillColor = '#fff';
     ctx.stroke(circle);
 
-
+return;
     // labels
 
     let currentLevelRounded = Math.round(this.zoomLevel / this.levelRange);
