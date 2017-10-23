@@ -39,9 +39,6 @@ $(document).ready(function() {
    */
 
   if ('serviceWorker' in navigator) {
-    // console.log('asd');
-    // let test = require('./service-worker');
-    // console.log(test);
     navigator.serviceWorker
     .register('./service-worker')
     .then(function() { console.log('Service Worker Registered'); });
