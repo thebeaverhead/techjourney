@@ -235,10 +235,10 @@ export default class Journey {
     for (let i = 0; i < itemsCount; i++) {
 
       const level = this.levels[i];
-      level.screenX = scalePosX - 8;
-      level.screenY = (i * scaleStep) + scaleTop - 8;
-      level.screenW = 16;
-      level.screenH = 16;
+      level.screenX = 0;
+      level.screenY = (i * scaleStep) + scaleTop - 16;
+      level.screenW = scalePosX + 16;
+      level.screenH = scalePosX + 16;
 
       let circle = new Path2D();
       //circle.moveTo(40, 100);
@@ -391,9 +391,6 @@ return;
       this.canvas.height/2,
     );
 
-    //grd.addColorStop(0.435, 'rgba(255, 255, 255, 1.000)');
-    //grd.addColorStop(1.000, 'rgba(242, 239, 239, 1.000)');
-
     grd.addColorStop(0.435, 'rgba(255, 255, 255, 1.000)');
     grd.addColorStop(1.000, 'rgba(242, 239, 239, 1.000)');
 
@@ -487,7 +484,6 @@ return;
     for (let i = 0; i < this.levels.length; i++) {
       const level = this.levels[i];
 
-      console.log(level.screenX, level.screenY );
       if (
         x >= level.screenX && (level.screenX + level.screenW) > x
         && level.screenY <= y && (level.screenY + level.screenH) > y

@@ -56,21 +56,26 @@ $(document).ready(function() {
     $('#levelDesc').html(desc);
   }
 
+  const canvas = document.getElementById('cvs');
 
+  const levelRange = canvas.width > canvas.height ? 600 : 500;
+  const zoomLevel = canvas.width > canvas.height ? 500 : 400;
+  const levelThreshold = canvas.width > canvas.height ? 50 : 50;
+  const zoomFactor = canvas.width > canvas.height ? 0.45 : 0.23;
+  const imgResizeFactor = canvas.width > canvas.height ? 0.001 : 0.0009;
 
   var journey = new Journey({
-    canvas: document.getElementById('cvs'),
-    levelRange: $('#levelRange').val() * 1,
-    levelThreshold: $('#levelThreshold').val() * 1,
-    zoomFactor: $('#zoomFactor').val() * 1,
-    imgResizeFactor: $('#imgResizeFactor').val() * 1,
+    canvas: canvas,
+    levelRange: levelRange,//$('#levelRange').val() * 1,
+    levelThreshold: levelThreshold, //$('#levelThreshold').val() * 1,
+    zoomFactor: zoomFactor, //$('#zoomFactor').val() * 1,
+    imgResizeFactor: imgResizeFactor, //$('#imgResizeFactor').val() * 1,
     speedFactor: $('#speedFactor').val() * 1,
-    zoomLevel: 500,
-    minZoomLevel: 500,
+    zoomLevel: zoomLevel,
+    minZoomLevel: zoomLevel,
     lang: navigator.language
   });
 
-  console.log(journey);
 
   var langSelected = false;
 
@@ -159,7 +164,7 @@ $(document).ready(function() {
     e.preventDefault();
     console.log(e);
 
-    onZoom(e.deltaX * journey.speedFactor, journey.levelRange);
+    onZoom(-1 * e.deltaY * journey.speedFactor, journey.levelRange);
   });
 
   /**
