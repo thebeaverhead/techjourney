@@ -47,13 +47,23 @@
       {
         "x": 0.00033,
         "y": 0.0001,
-        "imgPath": "logos/reactlogo.png"
+        "imgPath": "logos/reactlogo.png",
+        "label": "React",
+        "description": {
+          "en-UK": "A JavaScript library for building user interfaces.",
+          "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+        }
       },
       {
         "x": -1.013,
         "y": 1.12,
         "color": "#cba",
-        "imgPath": "logos/chromelogo.png"
+        "imgPath": "logos/chromelogo.png",
+        "label": "chrome",
+        "description": {
+          "en-UK": "One fast, simple, and secure browser for all your devices.",
+          "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+        }
       }
     ]
   },
@@ -71,13 +81,23 @@
       {
         "x": 0.00033,
         "y": 0.0001,
-        "imgPath": "logos/reactlogo.png"
+        "imgPath": "logos/reactlogo.png",
+        "label": "React",
+        "description": {
+          "en-UK": "A JavaScript library for building user interfaces.",
+          "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+        }
       },
       {
         "x": -1.013,
         "y": 1.12,
         "color": "#cba",
-        "imgPath": "logos/chromelogo.png"
+        "imgPath": "logos/chromelogo.png",
+        "label": "chrome",
+        "description": {
+          "en-UK": "One fast, simple, and secure browser for all your devices.",
+          "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+        }
       }
     ]
   },
@@ -95,13 +115,23 @@
       {
         "x": 0.00033,
         "y": 0.0001,
-        "imgPath": "logos/reactlogo.png"
+        "imgPath": "logos/reactlogo.png",
+        "label": "React",
+        "description": {
+          "en-UK": "A JavaScript library for building user interfaces.",
+          "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+        }
       },
       {
         "x": -1.013,
         "y": 1.12,
         "color": "#cba",
-        "imgPath": "logos/chromelogo.png"
+        "imgPath": "logos/chromelogo.png",
+        "label": "chrome",
+        "description": {
+          "en-UK": "One fast, simple, and secure browser for all your devices.",
+          "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+        }
       }
     ]
   },
@@ -119,13 +149,23 @@
       {
         "x": 0.00033,
         "y": 0.0001,
-        "imgPath": "logos/reactlogo.png"
+        "imgPath": "logos/reactlogo.png",
+        "label": "React",
+        "description": {
+          "en-UK": "A JavaScript library for building user interfaces.",
+          "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+        }
       },
       {
         "x": -1.013,
         "y": 1.12,
         "color": "#cba",
-        "imgPath": "logos/chromelogo.png"
+        "imgPath": "logos/chromelogo.png",
+        "label": "chrome",
+        "description": {
+          "en-UK": "One fast, simple, and secure browser for all your devices.",
+          "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+        }
       }
     ]
   },
@@ -143,13 +183,23 @@
       {
         "x": 0.00033,
         "y": 0.0001,
-        "imgPath": "logos/reactlogo.png"
+        "imgPath": "logos/reactlogo.png",
+        "label": "React",
+        "description": {
+          "en-UK": "A JavaScript library for building user interfaces.",
+          "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+        }
       },
       {
         "x": -1.013,
         "y": 1.12,
         "color": "#cba",
-        "imgPath": "logos/chromelogo.png"
+        "imgPath": "logos/chromelogo.png",
+        "label": "chrome",
+        "description": {
+          "en-UK": "One fast, simple, and secure browser for all your devices.",
+          "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+        }
       }
     ]
   },
@@ -167,13 +217,23 @@
       {
         "x": 0.00033,
         "y": 0.0001,
-        "imgPath": "logos/reactlogo.png"
+        "imgPath": "logos/reactlogo.png",
+        "label": "React",
+        "description": {
+          "en-UK": "A JavaScript library for building user interfaces.",
+          "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+        }
       },
       {
         "x": -1.013,
         "y": 1.12,
         "color": "#cba",
-        "imgPath": "logos/chromelogo.png"
+        "imgPath": "logos/chromelogo.png",
+        "label": "chrome",
+        "description": {
+          "en-UK": "One fast, simple, and secure browser for all your devices.",
+          "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+        }
       }
     ]
   },
@@ -191,13 +251,23 @@
       {
         "x": 0.00033,
         "y": 0.0001,
-        "imgPath": "logos/reactlogo.png"
+        "imgPath": "logos/reactlogo.png",
+        "label": "React",
+        "description": {
+          "en-UK": "A JavaScript library for building user interfaces.",
+          "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+        }
       },
       {
         "x": -1.013,
         "y": 1.12,
         "color": "#cba",
-        "imgPath": "logos/chromelogo.png"
+        "imgPath": "logos/chromelogo.png",
+        "label": "chrome",
+        "description": {
+          "en-UK": "One fast, simple, and secure browser for all your devices.",
+          "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+        }
       }
     ]
   }

@@ -135,7 +135,7 @@ export default class Journey {
 
       //
       newImagePosX += resizeFactorDeltaX;
-      newImagePosY += resizeFactorDeltaY * 2;
+      newImagePosY += resizeFactorDeltaY;
     }
     else if (item.x >= 0 && item.y < 0) {
       // III
@@ -189,11 +189,11 @@ export default class Journey {
     item.screenW = ~~(newImageWidth);
     item.screenH = ~~(newImageHeight);
 
-    let circle = new Path2D();
+    /*let circle = new Path2D();
     //circle.moveTo(40, 100);
     circle.rect(item.screenX, item.screenY, item.screenW, item.screenH);
     ctx.fillColor = '#bca';
-    ctx.stroke(circle);
+    ctx.stroke(circle);*/
 
 
   }
@@ -209,7 +209,7 @@ export default class Journey {
 
     let scaleTop = 40;
     let scaleBottom = canvas.height - 40;
-    let scalePosX = 40;
+    let scalePosX = canvas.width > canvas.height ? 40 : 20;
     let sliderRadius = 8;
 
 
@@ -221,23 +221,37 @@ export default class Journey {
 
     // render scale
     // vertical
-    ctx.beginPath();
-    ctx.moveTo(scalePosX, scaleTop);
-    ctx.lineTo(scalePosX, scaleBottom);
-    ctx.lineWidth = 0.3;
-    ctx.stroke();
-    ctx.closePath();
+    for (let i = 0; i < itemsCount-1; i++) {
+      ctx.beginPath();
+      ctx.moveTo(scalePosX, (scaleTop + (scaleStep * i)) + 8);
+      ctx.lineTo(scalePosX, (scaleTop + (scaleStep * i)) + scaleStep - 8);
+      ctx.lineWidth = 0.3;
+      ctx.stroke();
+      ctx.closePath();
+    }
 
     // horizontal
 
+    for (let i = 0; i < itemsCount; i++) {
 
-    let i = 1;
-    for (i; i <= itemsCount; i++) {
+      let circle = new Path2D();
+      //circle.moveTo(40, 100);
+      circle.arc(
+        scalePosX,
+        (i * scaleStep) + scaleTop,
+        8,
+        0,
+        2 * Math.PI
+      );
       ctx.beginPath();
+      ctx.fillColor = '#fff';
+      ctx.stroke(circle);
+
+      /*ctx.beginPath();
       ctx.moveTo(scalePosX - 8, ((i * scaleStep) + scaleTop));
       ctx.lineTo(scalePosX + 8, ((i * scaleStep) + scaleTop));
       ctx.lineWidth = 0.3;
-      ctx.stroke();
+      ctx.stroke();*/
       ctx.closePath();
 
     }
@@ -246,18 +260,35 @@ export default class Journey {
     // ------------------
     let currentLevel = Math.floor(this.zoomLevel / this.levelRange);
 
-    let pointerPosFactor = ((this.zoomLevel - (this.zoomLevel * 0.066) - this.minZoomLevel)
+    /*let pointerPosFactor = ((this.zoomLevel - (this.zoomLevel * 0.066) - this.minZoomLevel)
       / scaleMax * scaleHeight)
       + (scaleTop) + scaleStep;
+*/
+
+    let pointerPosFactor = scaleTop;// + (scaleStep * currentLevel);
+    const levelLength = (this.zoomLevel + this.levelRange) - this.zoomLevel;
+    pointerPosFactor += Math.floor(((this.zoomLevel - this.minZoomLevel % this.levelRange) * scaleStep) / levelLength);
 
     //console.log(app.zoomLevel, currentLevel, scaleMax, scaleHeight, scaleStep, pointerPosFactor);
 
     // slider
-    let circle = new Path2D();
-    //circle.moveTo(40, 100);
-    circle.arc(scalePosX, pointerPosFactor, 8, 0, 2 * Math.PI);
-    ctx.fillColor = '#fff';
-    ctx.stroke(circle);
+    ctx.beginPath();
+    // Add colors
+    let grd = ctx.createRadialGradient(scalePosX, pointerPosFactor, 0.000, scalePosX, pointerPosFactor, 8.000);
+
+    // Add colors
+    grd.addColorStop(0.274, 'rgba(255, 255, 255, 1.000)');
+    grd.addColorStop(1.000, 'rgba(148, 30, 31, 0.500)');
+
+    ctx.fillStyle = grd;
+    ctx.arc(scalePosX, pointerPosFactor, 9, 0, 2 * Math.PI);
+
+    //circle.arc(scalePosX, pointerPosFactor, 8, 0, 2 * Math.PI);
+    //ctx.fillColor = '#fff';
+    //ctx.stroke(circle);
+    ctx.fill();
+    ctx.closePath();
+
 
 return;
     // labels

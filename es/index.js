@@ -41,7 +41,7 @@ $(document).ready(function() {
   function updateDescription(lang, item, lvl) {
 
     if (!lvl) {
-      lvl = Math.floor(journey.zoomLevel/journey.levelRange);
+      lvl = Math.floor(journey.zoomLevel / journey.levelRange);
     }
 
     let label = journey.levels[lvl].label[lang];
@@ -49,6 +49,7 @@ $(document).ready(function() {
 
     if (item) {
       label += " &gt; " + item.label;
+      desc = item.description[lang];
     }
 
     $('#levelTitle').html(label);
