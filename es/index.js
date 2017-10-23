@@ -33,6 +33,20 @@ Math.easeInOutQuad = function (t, b, c, d) {
  */
 $(document).ready(function() {
 
+
+  /**
+   * Service worker initialization
+   */
+
+  if ('serviceWorker' in navigator) {
+    // console.log('asd');
+    // let test = require('./service-worker');
+    // console.log(test);
+    navigator.serviceWorker
+    .register('./service-worker')
+    .then(function() { console.log('Service Worker Registered'); });
+  }
+
   /**
    *
    * @param lang
