@@ -139,11 +139,16 @@ export default class Journey {
     }
     else if (item.x >= 0 && item.y < 0) {
       // III
-      // nothing to do
+
+      newImagePosX -= resizeFactorDeltaX;
+      newImagePosY -= resizeFactorDeltaY;
     }
     else if (item.x < 0 && item.y < 0) {
       // IV
       newImagePosX = ppx - newImageWidth;
+
+      newImagePosX += resizeFactorDeltaX;
+      newImagePosY -= resizeFactorDeltaY * 2;
     }
 
 
