@@ -82,7 +82,7 @@ export default class Journey {
   /**
    *
    */
-  renderItem(item, zoomLevel) {
+  renderItem(item, zoomLevel, highlightItemdX, highlightItemdY, bgDX) {
 
 
     const canvas = this.canvas;
@@ -152,14 +152,13 @@ export default class Journey {
     }
 
 
+    item.origScreenX = newImagePosX + cvsCenterX;
+    item.origScreenY = newImagePosY - cvsCenterY;
 
-    if (item.highlightLevel) {
+    newImagePosX += highlightItemdX;
+    newImagePosY += highlightItemdY;
 
 
-      console.log(resizeFactorDeltaX);
-
-
-    }
 
     ctx.drawImage(
       img,
@@ -181,6 +180,43 @@ export default class Journey {
     }
 
 
+
+    if (!item.highlightLevel && highlightItemdX != 0) {
+
+      const imageCenterX = newImagePosX + (~~(newImageWidth) / 2);
+      const imageCenterY = newImagePosY + (~~(newImageHeight) / 2);
+
+      // Add colors
+      //grd.addColorStop(0.1, 'rgba(255, 255, 255, 0.5)');//, ' + ( (highlightItemdX/10)) +')');
+      //grd.addColorStop(1.000, '#fff');
+
+
+        ctx.beginPath();
+        // Add colors
+        let grd = ctx.createRadialGradient(
+          imageCenterX,
+          imageCenterY,
+          0.000,
+          imageCenterX,
+          imageCenterY,
+          newImageWidth
+        );
+
+        grd.addColorStop(0.4, 'rgba(255, 255, 255, ' + (bgDX/2) +')');
+        grd.addColorStop(0.7, 'rgba(255, 255, 255, ' + (bgDX/5) +')');
+
+
+        ctx.fillStyle = grd;
+        ctx.arc(imageCenterX, imageCenterY, newImageWidth, 0, 2 * Math.PI);
+
+        //circle.arc(scalePosX, pointerPosFactor, 8, 0, 2 * Math.PI);
+        //ctx.fillColor = '#fff';
+        //ctx.stroke(circle);
+        ctx.fill();
+        ctx.closePath();
+
+
+    }
     ctx.restore();
 
     item.screenX = newImagePosX + cvsCenterX;
@@ -189,11 +225,13 @@ export default class Journey {
     item.screenW = ~~(newImageWidth);
     item.screenH = ~~(newImageHeight);
 
-    /*let circle = new Path2D();
+/*    let circle = new Path2D();
     //circle.moveTo(40, 100);
     circle.rect(item.screenX, item.screenY, item.screenW, item.screenH);
+    ctx.beginPath();
     ctx.fillColor = '#bca';
-    ctx.stroke(circle);*/
+    ctx.stroke(circle);
+    ctx.closePath();*/
 
 
   }
@@ -283,8 +321,8 @@ export default class Journey {
     let grd = ctx.createRadialGradient(scalePosX, pointerPosFactor, 0.000, scalePosX, pointerPosFactor, 8.000);
 
     // Add colors
-    grd.addColorStop(0.274, 'rgba(255, 255, 255, 1.000)');
-    grd.addColorStop(1.000, 'rgba(148, 30, 31, 0.500)');
+    grd.addColorStop(0.9, '#939393');
+    grd.addColorStop(1.000, '#707070');
 
     ctx.fillStyle = grd;
     ctx.arc(scalePosX, pointerPosFactor, 9, 0, 2 * Math.PI);
@@ -379,8 +417,6 @@ return;
      *
      */
 
-
-
     // Add colors
     let grd = ctx.createRadialGradient(
       this.canvas.width/2,
@@ -402,9 +438,57 @@ return;
 
     this.renderScale();
 
+    let highlightedItem = null;
+    let highlightItemdX = 0;
+    let highlightItemdY = 0;
+    let bgDX = 0;
+
+    for (let i = 0; i < this.levels.length; i++) {
+
+      const elements = this.levels[i].elements;
+
+      for (let j = 0; j < elements.length; j++) {
+        if (elements[j].highlightLevel) {
+          highlightedItem = elements[j];
+          break;
+        }
+      }
+
+      if (highlightedItem) {
+        break;
+      }
+    }
+
+    if (highlightedItem) {
+      const screenCenterX = canvas.width/2;
+      const screenCenterY = canvas.height/2;
+
+      const hghLvl = highlightedItem.highlightLevel - 1;
+      const highlightedItemCenterX = (highlightedItem.origScreenX + (highlightedItem.screenW/2));
+      const highlightedItemCenterY = (highlightedItem.origScreenY + (highlightedItem.screenH/2));
+
+      highlightItemdX = (screenCenterX - highlightedItemCenterX);///highlightedItem.highlightLevel;
+      highlightItemdY = (screenCenterY - highlightedItemCenterY);///highlightedItem.highlightLevel;
+
+      const hghFactor = (hghLvl * 100 / 1.2);
+      highlightItemdX = (highlightItemdX * hghFactor / 100);
+      highlightItemdY = highlightItemdY * hghFactor / 100;
+      /*console.log(hghFactor/100, highlightItemdY, highlightedItemCenterY, highlightItemdX, highlightedItem.highlightLevel);
+          let circle = new Path2D();
+        //circle.moveTo(40, 100);
+        circle.rect(highlightedItemCenterX + highlightItemdX, highlightItemdY, 2, 2);
+        ctx.beginPath();
+        ctx.fillColor = 'red';
+        ctx.stroke(circle);
+        ctx.closePath();
+*/
+      bgDX = (hghFactor/100);
+
+    }
+
 
     // walk through all layers
-    for (let i = 0; i < this.levels.length; i++) {
+    for (let i = this.levels.length - 1; i >= 0/*< this.levels.length*/; i--) {
 
       const level = this.levels[i];
       const objts = level.elements;
@@ -438,9 +522,16 @@ return;
           );
       */
 
+      const levelFromVisible = i - currentLevel + 1;
       // if layer is visible render items
       for (let j = 0; j < objts.length; j++) {
-        this.renderItem(objts[j], levelZoom);
+        this.renderItem(
+          objts[j],
+          levelZoom,
+          levelFromVisible * (highlightItemdX / levelFromVisible),
+          levelFromVisible * (highlightItemdY / levelFromVisible),
+          bgDX
+        );
       }
 
     }

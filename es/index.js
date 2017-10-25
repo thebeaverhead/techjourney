@@ -228,16 +228,20 @@ $(document).ready(function() {
           step++;
 
           if (item) {
-            item.highlightLevel = Math.easeInOutQuad(step, 1, 1.5, 50);
+            item.highlightLevel = Math.easeInOutQuad(step, 1, 1.2, 50);
           }
 
           if (previousItem) {
-            previousItem.highlightLevel = 3.5 - Math.easeInOutQuad(step, 1, 1.5, 50);
+            previousItem.highlightLevel = 3.2 - Math.easeInOutQuad(step, 1, 1.2, 50);
           }
           journey.render();
 
           if (step > 50) {
             clearInterval(highlightInterval);
+
+            if (previousItem){
+              previousItem.highlightLevel = 0;
+            }
           }
 
         },
@@ -245,7 +249,6 @@ $(document).ready(function() {
       );
     }
     else {
-      console.log(x, y);
       const level = journey.getLevelXY(x, y);
 
       if (level) {
