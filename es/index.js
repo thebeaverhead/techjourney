@@ -48,8 +48,8 @@ $(document).ready(function() {
    */
   function updateDescription(lang, item, lvl) {
 
-    if (!lvl) {
-      lvl = Math.floor(journey.zoomLevel / journey.levelRange);
+    if (lvl === null || lvl === undefined) {
+      lvl = journey.getCurrentLevel();
     }
 
     let label = journey.levels[lvl].label[lang];
@@ -300,7 +300,7 @@ $(document).ready(function() {
       const level = journey.getLevelXY(x, y);
 
       if (level) {
-        const currentLevelZoom = (1 + Math.floor(journey.zoomLevel / journey.levelRange)) * journey.levelRange;
+        const currentLevelZoom = (1 + journey.getCurrentLevel()) * journey.levelRange;
         const levelZoom = (level.level + 1) * journey.levelRange;
 
         const deltaZoom = levelZoom - currentLevelZoom > 0 ? 1 : -1;
@@ -351,6 +351,9 @@ $(document).ready(function() {
       var step = 0;
       const currentZoomLevel = journey.zoomLevel;
 
+      const currentLevel = journey.getCurrentLevel();
+
+      updateDescription(journey.lang, null, currentLevel + (deltaZoom >= 0 ? 1 : -1));
 
       journey.accelerateZoom = setInterval(
         () => {
@@ -370,7 +373,7 @@ $(document).ready(function() {
             let level = Math.floor(journey.zoomLevel/levelRange);
 
             setTimeout(() => {journey.zooming = false}, 400);
-            updateDescription(journey.lang);
+
           }
 
         },
@@ -440,7 +443,7 @@ $(document).ready(function() {
 
     const time = (new Date()).getTime();
 
-    if (time - lastScrollTime < 1000) {
+    if (time - lastScrollTime < 800) {
       return;
     }
 

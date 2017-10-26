@@ -302,7 +302,7 @@ export default class Journey {
 
 
     // ------------------
-    let currentLevel = Math.floor(this.zoomLevel / this.levelRange);
+    let currentLevel = this.getCurrentLevel();
 
     /*let pointerPosFactor = ((this.zoomLevel - (this.zoomLevel * 0.066) - this.minZoomLevel)
       / scaleMax * scaleHeight)
@@ -561,7 +561,7 @@ return;
    * @returns {*}
    */
   getItemXY(x, y) {
-    const currentLevel = Math.floor(this.zoomLevel / this.levelRange);
+    const currentLevel = this.getCurrentLevel();
     const levelObjects = this.levels[currentLevel].elements;
 
     for (let i = 0; i < levelObjects.length; i++) {
@@ -599,5 +599,14 @@ return;
     }
 
     return null;
+  }
+
+
+  /**
+   *
+   * @returns {number}
+   */
+  getCurrentLevel() {
+    return Math.floor(this.zoomLevel / this.levelRange);
   }
 }
