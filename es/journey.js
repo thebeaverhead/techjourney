@@ -438,25 +438,25 @@ return;
 
     this.renderScale();
 
-    let highlightedItem = null;
+    let highlightedItem = this.selectedItem;
+    let prevHighlightedItem = null;
     let highlightItemdX = 0;
     let highlightItemdY = 0;
     let bgDX = 0;
 
-    for (let i = 0; i < this.levels.length; i++) {
 
-      const elements = this.levels[i].elements;
+    const elements = this.levels[currentLevel].elements;
 
-      for (let j = 0; j < elements.length; j++) {
-        if (elements[j].highlightLevel) {
-          highlightedItem = elements[j];
-          break;
-        }
-      }
-
-      if (highlightedItem) {
+    for (let j = 0; j < elements.length; j++) {
+      if (elements[j].highlightLevel && elements[j] != highlightedItem) {
+        prevHighlightedItem = elements[j];
         break;
       }
+    }
+
+    if (!highlightedItem && prevHighlightedItem) {
+      highlightedItem = prevHighlightedItem;
+      prevHighlightedItem = null;
     }
 
     if (highlightedItem) {
@@ -484,6 +484,21 @@ return;
 */
       bgDX = (hghFactor/100);
 
+
+      if (prevHighlightedItem) {
+        const phghLvl = prevHighlightedItem.highlightLevel - 1;
+        const pItemCenterX = (prevHighlightedItem.origScreenX + (prevHighlightedItem.screenW/2));
+        const pItemCenterY = (prevHighlightedItem.origScreenY + (prevHighlightedItem.screenH/2));
+
+        const pItemdX = (screenCenterX - pItemCenterX);
+        const pItemdY = (screenCenterY - pItemCenterY);
+
+        const phghFactor = (phghLvl * 100 / 1.2);
+
+        highlightItemdX += (pItemdX * phghFactor / 100);
+        highlightItemdY += pItemdY * phghFactor / 100;
+
+      }
     }
 
 
@@ -528,8 +543,8 @@ return;
         this.renderItem(
           objts[j],
           levelZoom,
-          levelFromVisible * (highlightItemdX / levelFromVisible),
-          levelFromVisible * (highlightItemdY / levelFromVisible),
+          levelFromVisible * (highlightItemdX / levelFromVisible) - 10,
+          levelFromVisible * (highlightItemdY / levelFromVisible) - 10,
           bgDX
         );
       }

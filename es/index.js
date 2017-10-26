@@ -26,12 +26,20 @@ Math.easeInOutQuad = function (t, b, c, d) {
 };
 
 
+Math.easeInQuad = function (t, b, c, d) {
+  t /= d;
+  return c*t*t + b;
+};
+
 
 
 /**
  *
  */
 $(document).ready(function() {
+
+  var lastScrollTime = 0;
+
 
   /**
    *
@@ -52,9 +60,18 @@ $(document).ready(function() {
       desc = item.description[lang];
     }
 
-    $('#levelTitle').html(label);
-    $('#levelDesc').html(desc);
+    $('.fade').addClass('in');
+    setTimeout(
+      () => {
+        $('#levelTitle').html(label);
+        $('#levelDesc').html(desc);
+        $('.fade').removeClass('in');
+      },
+      500
+    );
+
   }
+
 
   const canvas = document.getElementById('cvs');
 
@@ -202,6 +219,63 @@ $(document).ready(function() {
 
   /**
    *
+   * @param item
+   * @param previousItem
+   * @param step
+   */
+  function animateHighlighting(item, previousItem, step) {
+
+    if (item) {
+      item.highlightLevel = Math.easeInOutQuad(step, 1, 1.2, 50);
+    }
+
+    if (previousItem) {
+      previousItem.highlightLevel = 3.2 - Math.easeInOutQuad(step, 1, 1.2, 50);
+    }
+
+  }
+
+
+  /**
+   *
+   * @param item
+   * @param previousItem
+   */
+  function handleHighlighting(item, previousItem) {
+
+
+    var step = 1;
+    if (item) {
+      item.highlightLevel = item.highlightLevel ? item.highlightLevel : 0;
+    }
+
+    journey.zooming = true;
+    var highlightInterval = setInterval(
+      () => {
+
+        animateHighlighting(item, previousItem, step++);
+        journey.render();
+
+        if (step > 50) {
+          clearInterval(highlightInterval);
+
+          if (previousItem){
+            previousItem.highlightLevel = 0;
+            if (journey.selectedItem == previousItem) {
+              journey.selectedItem = null;
+            }
+          }
+          journey.zooming = false;
+        }
+
+      },
+      10
+    );
+  }
+
+
+  /**
+   *
    */
   $('#cvs').click((e) =>  {
 
@@ -210,43 +284,15 @@ $(document).ready(function() {
 
     const item = journey.getItemXY(x, y);
 
-    updateDescription(journey.lang, item);
-
     if ((item || journey.selectedItem) && item != journey.selectedItem) {
 
+
+      updateDescription(journey.lang, item);
       var previousItem = journey.selectedItem;
       journey.selectedItem = item;
 
-      var step = 1;
-      if (item) {
-        item.highlightLevel = item.highlightLevel ? item.highlightLevel : 0;
-      }
 
-      var highlightInterval = setInterval(
-        () => {
-
-          step++;
-
-          if (item) {
-            item.highlightLevel = Math.easeInOutQuad(step, 1, 1.2, 50);
-          }
-
-          if (previousItem) {
-            previousItem.highlightLevel = 3.2 - Math.easeInOutQuad(step, 1, 1.2, 50);
-          }
-          journey.render();
-
-          if (step > 50) {
-            clearInterval(highlightInterval);
-
-            if (previousItem){
-              previousItem.highlightLevel = 0;
-            }
-          }
-
-        },
-        10
-      );
+      handleHighlighting(item, previousItem);
     }
     else {
       const level = journey.getLevelXY(x, y);
@@ -258,7 +304,12 @@ $(document).ready(function() {
         const deltaZoom = levelZoom - currentLevelZoom > 0 ? 1 : -1;
         onZoom(deltaZoom, deltaZoom * (levelZoom - currentLevelZoom));
       }
+      else {
+        updateDescription(journey.lang);
+      }
     }
+
+
   });
 
 
@@ -273,7 +324,9 @@ $(document).ready(function() {
     journey.lang = $(e.target).val();
 
     journey.render();
-    updateDescription(journey.lang);
+
+    updateDescription(journey.lang, journey.selectedItem);
+
 
   });
 
@@ -296,7 +349,6 @@ $(document).ready(function() {
       var step = 0;
       const currentZoomLevel = journey.zoomLevel;
 
-      $('.fade').addClass('in');
 
       journey.accelerateZoom = setInterval(
         () => {
@@ -311,12 +363,11 @@ $(document).ready(function() {
           if (step > 100) {
 
             clearInterval(journey.accelerateZoom);
-            journey.zooming = false;
+
             journey.zoomLevel = currentZoomLevel + levelRange * (deltaZoom > 0 ? 1 : -1);
-
             let level = Math.floor(journey.zoomLevel/levelRange);
-            $('.fade').removeClass('in');
 
+            setTimeout(() => {journey.zooming = false}, 400);
             updateDescription(journey.lang);
           }
 
@@ -385,11 +436,25 @@ $(document).ready(function() {
   function onWheel(e) {
     e.preventDefault();
 
+    const time = (new Date()).getTime();
+
+    if (time - lastScrollTime < 1000) {
+      return;
+    }
+
+    lastScrollTime = time;
+    if (journey.selectedItem) {
+
+      handleHighlighting(null, journey.selectedItem);
+    }
 
     const deltaZoom = e.originalEvent.deltaY * journey.speedFactor;
 
-    onZoom(deltaZoom, journey.levelRange);
+    if (!journey.zooming) {
+      onZoom(deltaZoom, journey.levelRange);
+    }
   }
+
 
 /**
  *
