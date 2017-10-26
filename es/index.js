@@ -196,7 +196,9 @@ $(document).ready(function() {
    *
    */
   $('#info').click(() => {
-    $('#welcome').show();
+    $('.info-container').addClass('show');
+    $('#info .material-icons').html('close');
+
   });
 
 

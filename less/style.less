@@ -52,10 +52,6 @@ button {
 
   .transition(background 2s);
 
-  &.tego {
-    background: radial-gradient(ellipse at center, #ffffff 16%, #FAFAFA 42%, #F7F6F6 59%, #f2efef 100%); /* w3c */
-  }
-
   h1 {
     text-align: center;
     margin-top: 20px;
@@ -93,6 +89,16 @@ h4 {
   margin-top: 10px;
 }
 
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
 .debug {
   position: absolute;
   z-index: 1;
@@ -116,6 +122,7 @@ h4 {
 
 .info-block {
   position: absolute;
+  z-index: 3;
   top: 20px;
   right: 20px;
 
@@ -136,6 +143,21 @@ h4 {
     font-size: 20px;
   }
 
+}
+
+.info-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(0deg, #d5cbef, #ffffff);
+  position: absolute;
+  z-index: 3;
+  left: -100vw;
+  opacity: 0.75;
+  .transition(left 1.5s);
+
+  &.show {
+    left: 0;
+  }
 }
 
 .i18n-block {
