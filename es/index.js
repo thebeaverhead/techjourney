@@ -35,6 +35,17 @@ Math.easeInOutQuad = function (t, b, c, d) {
 $(document).ready(function() {
 
 
+  /**
+   * Service worker initialization
+   */
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+    .register('./service-worker')
+    .then(function() { console.log('Service Worker Registered'); });
+  }
+
+
   app.ui = new UI({
     onDescriptionChange: updateDescription
   });
