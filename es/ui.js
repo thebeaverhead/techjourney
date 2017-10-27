@@ -162,7 +162,7 @@ export default class UI {
       item.highlightLevel = item.highlightLevel ? item.highlightLevel : 0;
     }
 
-    this.zooming = true;
+    this.animating = true;
     var highlightInterval = setInterval(
       () => {
 
@@ -178,7 +178,7 @@ export default class UI {
               this.journey.selectedItem = null;
             }
           }
-          this.journey.zooming = false;
+          this.animating = false;
         }
 
       },
@@ -199,9 +199,10 @@ export default class UI {
     const maxLevel = (journey.levels.length * journey.levelRange - journey.levelThreshold);
     const currentZoomLevel = journey.zoomLevel;
 
+    console.log(journey.minZoomLevel, currentZoomLevel + levelRange, maxLevel);
     if (!journey.animating
       && ((currentZoomLevel + levelRange) >= journey.minZoomLevel
-        || (currentZoomLevel + levelRange) <= (maxLevel - journey.levelThreshold))) {
+       && (currentZoomLevel + levelRange) <= maxLevel)) {
 
       this.animating = true;
 
@@ -220,7 +221,7 @@ export default class UI {
           step++;
           let currentDelta = Math.easeInOutQuad(step, 1, levelRange, 100);
 
-          journey.zoomLevel = currentZoomLevel + currentDelta;// * (levelRange > 0 ? 1 : -1);
+          journey.zoomLevel = currentZoomLevel + currentDelta;
 
           journey.render();
 

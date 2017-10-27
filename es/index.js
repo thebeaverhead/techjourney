@@ -180,8 +180,17 @@ $(document).ready(function() {
    *
    */
   $('#info').click(() => {
-    $('.info-container').addClass('show');
-    $('#info .material-icons').html('close');
+    if ($('.info-container').hasClass('show')) {
+      $('.info-container').removeClass('show');
+      $('#info .material-icons').html('info_outline');
+      $('html').css('overflow', 'hidden');
+    }
+    else {
+      $('.info-container').addClass('show');
+      $('#info .material-icons').html('close');
+      $('body').css('overflow', 'visible');
+      $('html').css('overflow', 'visible');
+    }
 
   });
 
