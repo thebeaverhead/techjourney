@@ -39,13 +39,13 @@ $(document).ready(function() {
    * Service worker initialization
    */
 
-/*
+
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-    .register('./service-worker')
+    .register('./es/service-worker')
     .then(function() { console.log('Service Worker Registered'); });
   }
-*/
+
 
 
   app.ui = new UI({

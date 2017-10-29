@@ -1,4 +1,5 @@
-let cacheName = '0.0.2';
+let cacheName = "0.0.2";
+
 let filesToCache = [
   './',
   './style.css',
