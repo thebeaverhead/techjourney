@@ -42,6 +42,17 @@ export default class UI {
     this.onDescriptionChange({
       levelTitle: label,
       levelDesc: desc,
+      welcomeScreen: {
+        title: this.i18n.welcomeScreen.title[lang],
+        subtitle: this.i18n.welcomeScreen.subtitle[lang]
+      },
+      info: {
+        title: this.i18n.info.title[lang],
+        description: this.i18n.info.description[lang],
+        email: this.i18n.info.email[lang],
+        submit: this.i18n.info.submit[lang],
+      }
+
     });
 
   }

@@ -39,11 +39,13 @@ $(document).ready(function() {
    * Service worker initialization
    */
 
+/*
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
     .register('./service-worker')
     .then(function() { console.log('Service Worker Registered'); });
   }
+*/
 
 
   app.ui = new UI({
@@ -95,7 +97,9 @@ $(document).ready(function() {
     'data.json',
     null,
     (data) => {
-      app.ui.journey.levels = data;
+      app.ui.journey.levels = data.levels;
+
+      app.ui.i18n = data.i18n;
 
       app.ui.updateDescription();
 
@@ -103,11 +107,11 @@ $(document).ready(function() {
 
       var imgsToLoad = 0;
 
-      data.map(item => imgsToLoad += item.elements.length);
+      data.levels.map(item => imgsToLoad += item.elements.length);
 
       var loadedImgs = 0;
 
-      data.map((level) => {
+      data.levels.map((level) => {
 
 
         level.elements.map((item) => {
@@ -317,8 +321,21 @@ $(document).ready(function() {
     $('.fade').addClass('in');
     setTimeout(
       () => {
+
+        console.log(translation);
+
         $('#levelTitle').html(translation.levelTitle);
         $('#levelDesc').html(translation.levelDesc);
+
+        $('#welcomeScreen-title').html(translation.welcomeScreen.title);
+        $('#welcomeScreen-subtitle').html(translation.welcomeScreen.subtitle);
+
+        $('#info-title').html(translation.info.title);
+        $('#info-description').html(translation.info.description);
+        $('#email').attr('placeholder', translation.info.email);
+        $('#submit').html(translation.info.submit);
+
+
         $('.fade').removeClass('in');
       },
       500
