@@ -1,4 +1,4 @@
-let cacheName = "0.0.2";
+let cacheName = "0.0.3";
 
 let filesToCache = [
   './',
