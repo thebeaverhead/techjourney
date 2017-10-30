@@ -22,6 +22,7 @@ export default class Journey {
     this.zoomLevel = props.zoomLevel;
     this.minZoomLevel = props.minZoomLevel;
     this.lang = props.lang;
+    this.pxRatio = window.devicePixelRatio <= 1 ? 2 : window.devicePixelRatio;
 
     this.ctx = this.canvas.getContext('2d');
   }
@@ -60,32 +61,12 @@ export default class Journey {
 
   /**
    *
-   * @param data
-   */
-  grasyscaleImage(image) {
-
-    var d = image.data;
-    for (var i=0; i<d.length; i+=4) {
-      var r = d[i];
-      var g = d[i+1];
-      var b = d[i+2];
-      // CIE luminance for the RGB
-      // The human eye is bad at seeing red and blue, so we de-emphasize them.
-      var v = 0.2126*r + 0.7152*g + 0.0722*b;
-      d[i] = d[i+1] = d[i+2] = v
-    }
-
-    return image;
-  }
-
-
-  /**
-   *
    */
   renderItem(item, zoomLevel, highlightItemdX, highlightItemdY, bgDX) {
 
 
-    const canvas = this.canvas;
+    const canvasWidth = this.canvas.width / this.pxRatio;
+    const canvasHeight = this.canvas.height / this.pxRatio;
     const ctx = this.ctx;
 
     let n = zoomLevel * this.zoomFactor;
@@ -97,15 +78,15 @@ export default class Journey {
 
     let img = item.img;
 
-    let cvsCenterX = canvas.width / 2;
-    let cvsCenterY = canvas.height / 2;
+    const cvsCenterX = canvasWidth / 2;
+    const cvsCenterY = canvasHeight / 2;
 
     if (item.x < 0) {
       ppx = item.x - n;
       ppy = a * ppx;// * p + 300;
     }
 
-    let dppy = canvas.height - ppy;
+    let dppy = canvasHeight - ppy;
 
     //console.log(ppx, dppy, n, Math.abs(ppx));
     ctx.save();
@@ -246,7 +227,7 @@ export default class Journey {
     const ctx = this.ctx;
 
     let scaleTop = 40;
-    let scaleBottom = canvas.height - 40;
+    let scaleBottom = (canvas.height / this.pxRatio) - 40;
     let scalePosX = canvas.width > canvas.height ? 40 : 20;
     let sliderRadius = 8;
 
@@ -260,6 +241,7 @@ export default class Journey {
     // render scale
     // vertical
     for (let i = 0; i < itemsCount-1; i++) {
+
       ctx.beginPath();
       ctx.moveTo(scalePosX, (scaleTop + (scaleStep * i)) + 8);
       ctx.lineTo(scalePosX, (scaleTop + (scaleStep * i)) + scaleStep - 8);
@@ -419,16 +401,18 @@ return;
 
     // Add colors
     let grd = ctx.createRadialGradient(
-      this.canvas.width/2,
-      this.canvas.height/2,
+      this.canvas.width / (2 * this.pxRatio),
+      this.canvas.height / (2 * this.pxRatio),
       0.000,
-      this.canvas.width/2,
-      this.canvas.height/2,
-      this.canvas.height/2,
+      this.canvas.width / (2 * this.pxRatio),
+      this.canvas.height / (2 * this.pxRatio),
+      this.canvas.height / (2 * this.pxRatio),
     );
 
     grd.addColorStop(0.435, 'rgba(255, 255, 255, 1.000)');
     grd.addColorStop(1.000, 'rgba(242, 239, 239, 1.000)');
+
+
 
     // Fill with gradient
     ctx.fillStyle = grd;
@@ -460,8 +444,8 @@ return;
     }
 
     if (highlightedItem) {
-      const screenCenterX = canvas.width/2;
-      const screenCenterY = canvas.height/2;
+      const screenCenterX = canvas.width / (2 * this.pxRatio);
+      const screenCenterY = canvas.height / (2 * this.pxRatio);
 
       const hghLvl = highlightedItem.highlightLevel - 1;
       const highlightedItemCenterX = (highlightedItem.origScreenX + (highlightedItem.screenW/2));
@@ -561,6 +545,7 @@ return;
    * @returns {*}
    */
   getItemXY(x, y) {
+
     const currentLevel = this.getCurrentLevel();
     const levelObjects = this.levels[currentLevel].elements;
 

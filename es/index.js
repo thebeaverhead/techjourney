@@ -112,7 +112,7 @@ $(document).ready(function() {
 
             if (imgsToLoad == loadedImgs) {
 
-              app.ui.updateCanvasSize(window.innerWidth, window.innerHeight);
+              onWindowResize();
 
               $('#cvs').on('wheel', onWheel);
 
@@ -153,8 +153,10 @@ $(document).ready(function() {
   hammer.on('pinch', (e) => {
 
     e.preventDefault();
-    console.log(e);
-    app.ui.scroll(-1 * e.deltaY);
+    const sumDelta = e.deltaX+e.deltaY;
+    if (Math.abs(sumDelta) > 10) {
+      app.ui.scroll(-1 * e.deltaY);
+    }
   });
 
 
@@ -333,7 +335,9 @@ $(document).ready(function() {
    */
   function onWindowResize() {
 
-    app.ui.updateCanvasSize(innerWidth, innerHeight);
+    $('#cvs').css('width', window.innerWidth);
+    $('#cvs').css('height', window.innerHeight);
+    app.ui.updateCanvasSize(window.innerWidth, window.innerHeight);
 
   };
 

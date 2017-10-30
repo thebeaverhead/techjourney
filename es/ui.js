@@ -63,11 +63,18 @@ export default class UI {
    * @param height
    */
   updateCanvasSize(width, height) {
-    this.journey.canvas.width = width;
-    this.journey.canvas.height = height;
+    this.journey.canvas.width = width * this.journey.pxRatio;
+    this.journey.canvas.height = height * this.journey.pxRatio;
 
     this.journey.ctx = this.journey.canvas.getContext('2d');
 
+    /*this.journey.ctx.context.ImageSmoothingEnabled = true;
+    this.journey.ctx.context.webkitImageSmoothingEnabled = true;
+    this.journey.ctx.context.mozImageSmoothingEnabled = true;
+    this.journey.ctx.imageSmoothingQuality = 'high';*/
+    this.journey.ctx.scale(this.journey.pxRatio,  this.journey.pxRatio);
+    //this.journey.ctx.translate(-width/2, -height/2);
+    this.journey.ctx.save();
     this.journey.render();
   }
 
@@ -235,14 +242,7 @@ export default class UI {
             clearInterval(accelerateZoom);
 
             journey.zoomLevel = currentZoomLevel + levelRange;
-
-            setTimeout(
-              () => {
-                this.animating = false
-              },
-              400
-            );
-
+            this.animating = false;
           }
 
         },
