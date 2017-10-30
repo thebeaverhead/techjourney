@@ -1,6 +1,6 @@
 {
   "name": "techjourney",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "description": "An interactive journey through the technology stack.",
   "main": "es/index.js",
   "private": true,
