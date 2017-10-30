@@ -272,13 +272,15 @@ export default class Journey {
       ctx.beginPath();
       ctx.fillColor = '#fff';
       ctx.stroke(circle);
-
-      /*ctx.beginPath();
-      ctx.moveTo(scalePosX - 8, ((i * scaleStep) + scaleTop));
-      ctx.lineTo(scalePosX + 8, ((i * scaleStep) + scaleTop));
-      ctx.lineWidth = 0.3;
-      ctx.stroke();*/
       ctx.closePath();
+
+      /*circle = new Path2D();
+      //circle.moveTo(40, 100);
+      circle.rect(scalePosX, (i * scaleStep) + scaleTop, 16, 16);
+      ctx.beginPath();
+      ctx.fillColor = '#bca';
+      ctx.stroke(circle);
+      ctx.closePath();*/
 
     }
 

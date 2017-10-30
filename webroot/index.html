@@ -49,8 +49,12 @@
       <h3 id="info-title" class="fade" >Technology Stack Overview</h3>
       <p id="info-description" class="fade" ></p>
       <form>
+        <div id="submit-error" class="newsletter-info error">No luck :/ Ensure you are online and try again.</div>
+        <div id="submit-success" class="newsletter-info">All right! We'll keep in touch!</div>
+
         <input class="fade" id="email" type="email" placeholder="Your email"/>
         <button class="fade" id="submit">Submit</button>
+
       </form>
     </div>
   </div>
@@ -73,7 +77,7 @@
   </div>
 
 
-  <div class="info-block fade">
+  <div class="info-block ">
     <div class="i18n-block">
       <button type="button" class="lang-btn" value="en-UK">EN</button> |
       <button type="button" class="lang-btn" value="pl-PL">PL</button>
@@ -81,7 +85,30 @@
     <button type="button" id="info">
       <i class="material-icons">info_outline</i>
     </button>
+    <button type="button" id="share">
+      <i class="material-icons">share</i>
+    </button>
+    <div class="share-container">
 
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_google_plus"></a>
+        <a class="a2a_button_email"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_wykop"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.linkname = "Stack Overview";
+        a2a_config.linkurl = "https://stackoverview.thebeaverhead.com";
+        a2a_config.onclick = 1;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
   </div>
 
   <div class="level-description-block fade">
@@ -91,7 +118,7 @@
     </div>
   </div>
 
-  <div class="footer fade">
+  <div class="footer">
     <a href="http://thebeaverhead.com" title="Link to The Beaverhead homepage.">
       <img src="logo-tbh-red.svg" title="The Beaverhead"/>
     </a>
@@ -131,18 +158,18 @@
 
 
   <script type="text/javascript">
-    if ('serviceWorker' in navigator) {
+    /*if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .register('/service-worker.js', {scope: '/'})
         .then(function(registration) {
           //console.log(registration);
           //console.log('Service Worker Registered');
         });
-    }
+    }*/
   </script>
 
   <script type="text/javascript" src="bundle.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 
 
 </body>

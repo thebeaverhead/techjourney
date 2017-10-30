@@ -4,9 +4,11 @@
 
 import Journey from './journey';
 import UI from './ui';
+import FirebaseConfig from './firebase-config';
 
 import $ from 'jquery';
 import Hammer from 'hammerjs';
+import Isemail from 'isemail';
 
 console.log('hello tech journey');
 
@@ -38,6 +40,8 @@ $(document).ready(function() {
   app.ui = new UI({
     onDescriptionChange: updateDescription
   });
+
+  firebase.initializeApp(FirebaseConfig);
 
   const canvas = document.getElementById('cvs');
 
@@ -143,9 +147,9 @@ $(document).ready(function() {
   hammer.get('doubletap').set({enable: false});
   hammer.get('press').set({enable: false});
   hammer.get('pan').set({enable: false});
-  hammer.get('swipe').set({enable: false});
+  //hammer.get('swipe').set({enable: false});
   hammer.get('pinch').set({enable: true});
-
+  hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 
   /**
    *
@@ -158,6 +162,18 @@ $(document).ready(function() {
       app.ui.scroll(-1 * e.deltaY);
     }
   });
+
+
+  /**
+   *
+   */
+  hammer.on('swipe', (e) => {
+
+    e.preventDefault();
+
+    app.ui.scroll(-1 * e.deltaY);
+  });
+
 
 
   /**
@@ -196,6 +212,15 @@ $(document).ready(function() {
       $('html').css('overflow', 'visible');
     }
 
+  });
+
+  $('#share').click(() => {
+    if ($('.share-container').hasClass('show')) {
+      $('.share-container').removeClass('show');
+    }
+    else {
+      $('.share-container').addClass('show');
+    }
   });
 
 
@@ -301,6 +326,47 @@ $(document).ready(function() {
   });
 
 
+  $('#submit').click((e) => {
+    e.preventDefault();
+
+    const email = $('#email').val();
+    $('#email').removeClass('error');
+    $('#submit-error').hide();
+
+
+    if (!Isemail.validate(email)) {
+      $('#email').addClass('error');
+      $('#submit-error').show();
+    }
+    else {
+
+      $('#submit').prop('disabled', true);
+
+      const database = firebase.database();
+
+      database.goOnline();
+      database.ref("/newsletter/"+database.ref("/newsletter").push().key)
+        .set(
+          {email: email},
+          (error) => {
+
+            if (error) {
+              $('#submit-error').show();
+              $('#submit').prop('disabled', false);
+            }
+            else {
+              $('#submit-success').show();
+              $('#submit').css('visibility', 'hidden');
+
+            }
+            database.goOffline();
+          }
+        );
+    }
+
+  });
+
+
   /**
    *
    * @param translation
@@ -340,6 +406,8 @@ $(document).ready(function() {
     app.ui.updateCanvasSize(window.innerWidth, window.innerHeight);
 
   };
+
+
 
 
 });

@@ -89,6 +89,11 @@
   }
 }
 
+.clear {
+  clear: both;
+  display: block;
+}
+
 html, body {
   width:100%;
   height:100%;
@@ -126,6 +131,8 @@ a {
     text-align: center;
     margin-top: 20px;
     font-weight: 400;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   h4 {
@@ -143,13 +150,7 @@ a {
     width: 66px;
     height: 66px;
     box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
-/*
 
-    .transition(box-shadow 0.3s);
-
-    &:hover {
-      box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
-    }*/
   }
 
   .material-icons {
@@ -210,7 +211,7 @@ h4 {
   position: absolute;
   z-index: 3;
   top: 20px;
-  right: 30px;
+  right: 20px;
 
   @media (min-width: @screen-sm) {
     right: 40px;
@@ -231,6 +232,27 @@ h4 {
   .material-icons {
     vertical-align: bottom;
     font-size: 20px;
+  }
+
+  .share-container {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    margin-right: -13px;
+    margin-top: 4px;
+    height: 0px;
+    overflow: hidden;
+
+    .transition(height 0.7s);
+
+    &.show {
+      height: 250px;
+    }
+
+  }
+
+  .a2a_kit a {
+    margin-bottom: 4px;
   }
 
 }
@@ -256,9 +278,10 @@ h4 {
     padding: 0px;
     border: 1px solid;
     border-radius: 2px;
+    margin-top: 60px;
+
     margin-left: 20px;
     margin-right: 20px;
-    margin-top: 60px;
     margin-bottom: 40px;
 
     @media (min-width: @screen-sm) {
@@ -321,6 +344,21 @@ h4 {
     &:focus, &:active, &:hover {
       border-bottom: 1px solid rgba(0, 0, 0, 1);
     }
+
+
+  }
+  .error {
+    color: rgb(255, 1, 30);
+  }
+
+  .newsletter-info {
+    margin: 10px 3% 3%;
+    padding-top: 10px;
+    display: block;
+
+    text-align: center;
+    font-weight: 300;
+    display: none;
   }
 
   button {
@@ -348,6 +386,7 @@ h4 {
   position: absolute;
   width: 100%;
   bottom: 40px;
+  pointer-events:none;
 
   @media (min-width: @screen-sm) {
     width: 80%;
