@@ -30,7 +30,6 @@ export default class UI {
       lvl = journey.getCurrentLevel();
     }
 
-    console.log(lvl, lang);
     let label = journey.levels[lvl].label[lang];
     let desc = journey.levels[lvl].description[lang];
 
@@ -210,7 +209,6 @@ export default class UI {
     const maxLevel = (journey.levels.length * journey.levelRange - journey.levelThreshold);
     const currentZoomLevel = journey.zoomLevel;
 
-    console.log(journey.minZoomLevel, currentZoomLevel + levelRange, maxLevel);
     if (!journey.animating
       && ((currentZoomLevel + levelRange) >= journey.minZoomLevel
        && (currentZoomLevel + levelRange) <= maxLevel)) {
@@ -218,11 +216,7 @@ export default class UI {
       this.animating = true;
 
       var step = 0;
-
-
       const newLevel = Math.floor((journey.zoomLevel + levelRange) / journey.levelRange);
-
-      console.log(levelRange, newLevel);
 
       this.updateDescription(null, newLevel);
 

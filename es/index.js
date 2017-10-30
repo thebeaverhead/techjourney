@@ -35,19 +35,6 @@ Math.easeInOutQuad = function (t, b, c, d) {
 $(document).ready(function() {
 
 
-  /**
-   * Service worker initialization
-   */
-
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-    .register('./es/service-worker')
-    .then(function() { console.log('Service Worker Registered'); });
-  }
-
-
-
   app.ui = new UI({
     onDescriptionChange: updateDescription
   });
@@ -120,7 +107,7 @@ $(document).ready(function() {
 
           item.img.onload = function() {
 
-            console.log(item.imgPath + ' loaded');
+            //console.log(item.imgPath + ' loaded');
             loadedImgs++;
 
             if (imgsToLoad == loadedImgs) {
@@ -321,8 +308,6 @@ $(document).ready(function() {
     $('.fade').addClass('in');
     setTimeout(
       () => {
-
-        console.log(translation);
 
         $('#levelTitle').html(translation.levelTitle);
         $('#levelDesc').html(translation.levelDesc);
