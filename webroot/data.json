@@ -33,33 +33,132 @@
     {
       "level": 0,
       "label": {
-        "en-UK": "level zero",
-        "pl-PL": "poziom zero"
+        "en-UK": "Host",
+        "pl-PL": "Host"
       },
       "description": {
-        "en-UK": "The effects (...) depend on the system and library implementation and may cause a program to behave in a non-standard manner or to terminate.",
-        "pl-PL": "Efekty (...) zależą od implementacji systemu i biblioteki i mogą spowodować, że program będzie zachowywać się w sposób niestandardowy lub się zakończy."
+        "en-UK": "This is you. This level represents an entry point of this presentation. Everything below can be considered as front-end and what's above- backend. Host (endpoint) can be anything from computer through AGD equipment, vehicles or even a teapot!",
+        "pl-PL": "To jesteś Ty. Ten poziom prezentuje początek prezentacji. Wszystko co jest poniżej może być traktowane jako front-end a to co powyżej jako backend. Hostem (końcówką) może być wszystko poczynając od komputera przez sprzęt AGD, pojazdy a kończąc na czajniku!"
       },
       "elements": [
         {
           "x": 0.00033,
           "y": 0.0001,
-          "imgPath": "logos/chromelogo.png",
-          "label": "chrome",
+          "imgPath": "images/host/computer.png",
+          "label": "Computer",
           "description": {
-            "en-UK": "One fast, simple, and secure browser for all your devices.",
-            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+            "en-UK": "A computer .....",
+            "pl-PL": "Komputer..."
+          }
+        },
+        {
+          "x": 100.53,
+          "y": -10.1,
+          "color": "#cba",
+          "imgPath": "images/host/smartphone.png",
+          "label": "Smartphone",
+          "description": {
+            "en-UK": "A smartphone....",
+            "pl-PL": "Smartphone..."
           }
         },
         {
           "x": -1.013,
           "y": 1.12,
           "color": "#cba",
-          "imgPath": "logos/reactlogo.png",
-          "label": "React",
+          "imgPath": "images/host/tablet.png",
+          "label": "Tablet",
           "description": {
-            "en-UK": "A JavaScript library for building user interfaces.",
-            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+            "en-UK": "A tablet....",
+            "pl-PL": "Tablet..."
+          }
+        },
+        {
+          "x": -270.013,
+          "y": 15.12,
+          "color": "#cba",
+          "imgPath": "images/host/watch.png",
+          "label": "Smartwach",
+          "description": {
+            "en-UK": "A smartwach....",
+            "pl-PL": "Zegarek..."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": -3.12,
+          "color": "#cba",
+          "imgPath": "images/host/teapot.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": -90.013,
+          "y": -5.12,
+          "color": "#cba",
+          "imgPath": "images/host/vehicle.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": 230.013,
+          "y": 40.12,
+          "color": "#cba",
+          "imgPath": "images/host/public_transport.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": 140.013,
+          "y": -123.12,
+          "color": "#cba",
+          "imgPath": "images/host/agd.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": 90.013,
+          "y": 123.12,
+          "color": "#cba",
+          "imgPath": "images/host/cup.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": 0.0001,
+          "y": 0.0009,
+          "color": "#cba",
+          "imgPath": "images/host/laptop.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": -0.2252234,
+          "y": 0.9234,
+          "color": "#cba",
+          "imgPath": "images/host/tv.png",
+          "label": "TV",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
           }
         }
       ]
@@ -67,8 +166,8 @@
     {
       "level": 1,
       "label": {
-        "en-UK": "level one",
-        "pl-PL": "poziom jeden"
+        "en-UK": "Web Browser",
+        "pl-PL": "Przeglądarka"
       },
       "description": {
         "en-UK": "Short forms of external names for systems with brain-damaged linkers.",
@@ -76,30 +175,139 @@
       },
       "elements": [
         {
-          "x": 0.0003,
-          "y": 0.0001,
-          "imgPath": "logos/reactlogo.png",
-          "label": "React",
-          "description": {
-            "en-UK": "A JavaScript library for building user interfaces.",
-            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
-          }
-        },
-        {
-          "x": -1.013,
-          "y": 1.12,
+          "x": -10.913,
+          "y": 0.0023,
           "color": "#cba",
-          "imgPath": "logos/chromelogo.png",
-          "label": "chrome",
+          "imgPath": "images/webbrowser/chromium.png",
+          "label": "Chromium",
           "description": {
             "en-UK": "One fast, simple, and secure browser for all your devices.",
             "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
           }
         }
-      ]
+      ,{
+          "x": 40.913,
+          "y": -70.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/coccoc.png",
+          "label": "Coc Coc",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -10.913,
+          "y": -50.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/edge.png",
+          "label": "Microsoft Edge",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 30.913,
+          "y": 34.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/explorer.png",
+          "label": "Internet Explorer",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -100.913,
+          "y": -1.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/firefox.png",
+          "label": "Mozilla Firefox",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -1.913,
+          "y": 20.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/neon.png",
+          "label": "Opera Neon",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 100.13,
+          "y": -0.012,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/opera.png",
+          "label": "Opera",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -1.913,
+          "y": -1.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/palemoon.png",
+          "label": "Pale Moon",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -40.913,
+          "y": -0.012,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/safari.png",
+          "label": "Safari",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -19.913,
+          "y": -32.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/sogou.png",
+          "label": "Sogou",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -100.013,
+          "y": 70.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/uc.png",
+          "label": "UC Browser",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 4.0003,
+          "y": 10.0001,
+          "imgPath": "images/webbrowser/yandex.png",
+          "label": "Yandex Browser",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        }]
     },
     {
-      "level": 2,
+      "New Item 4":"","level": 2,
       "label": {
         "en-UK": "level two",
         "pl-PL": "poziom dwa"
