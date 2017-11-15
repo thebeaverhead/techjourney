@@ -164,7 +164,7 @@
       ]
     },
     {
-      "level": 2,
+      "level": 1,
       "label": {
         "en-UK": "Operating System",
         "pl-PL": "System operacyjny"
@@ -222,7 +222,7 @@
         }]
     },
     {
-      "level": 1,
+      "level": 2,
       "label": {
         "en-UK": "Web Browser",
         "pl-PL": "Przeglądarka"
@@ -367,8 +367,8 @@
     {
       "level": 3,
       "label": {
-        "en-UK": "level three",
-        "pl-PL": "poziom trzy"
+        "en-UK": "Application framework",
+        "pl-PL": "Framework aplikacji"
       },
       "description": {
         "en-UK": "This is not the function you are interested in.",
@@ -376,9 +376,64 @@
       },
       "elements": [
         {
+          "x": -50.013,
+          "y": 100.12,
+          "color": "#cba",
+          "imgPath": "images/js/meteor.png",
+          "label": "Meteor",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -140.013,
+          "y": 10.12,
+          "color": "#cba",
+          "imgPath": "images/js/jquery.png",
+          "label": "jQuery",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 0.23,
+          "y": -1.22,
+          "color": "#cba",
+          "imgPath": "images/js/ember.png",
+          "label": "Ember.js",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 10.013,
+          "y": -16.12,
+          "color": "#cba",
+          "imgPath": "images/js/vue.png",
+          "label": "Vue.js",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -10.013,
+          "y": -30.12,
+          "color": "#cba",
+          "imgPath": "images/js/angular.png",
+          "label": "AngularJS",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
           "x": 0.00033,
           "y": 0.0001,
-          "imgPath": "logos/reactlogo.png",
+          "imgPath": "images/js/react.png",
           "label": "React",
           "description": {
             "en-UK": "A JavaScript library for building user interfaces.",
@@ -389,8 +444,8 @@
           "x": -1.013,
           "y": 1.12,
           "color": "#cba",
-          "imgPath": "logos/chromelogo.png",
-          "label": "chrome",
+          "imgPath": "images/js/backbone.png",
+          "label": "Backbone.js",
           "description": {
             "en-UK": "One fast, simple, and secure browser for all your devices.",
             "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
@@ -467,40 +522,6 @@
       ]
     },
     {
-      "level": 6,
-      "label": {
-        "en-UK": "level six",
-        "pl-PL": "poziom sześć"
-      },
-      "description": {
-        "en-UK": "Magic. Do not touch.",
-        "pl-PL": "Magia. Nie dotykać."
-      },
-      "elements": [
-        {
-          "x": 0.00033,
-          "y": 0.0001,
-          "imgPath": "logos/reactlogo.png",
-          "label": "React",
-          "description": {
-            "en-UK": "A JavaScript library for building user interfaces.",
-            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
-          }
-        },
-        {
-          "x": -1.013,
-          "y": 1.12,
-          "color": "#cba",
-          "imgPath": "logos/chromelogo.png",
-          "label": "chrome",
-          "description": {
-            "en-UK": "One fast, simple, and secure browser for all your devices.",
-            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
-          }
-        }
-      ]
-    },
-    {
       "level": 7,
       "label": {
         "en-UK": "level seven",
@@ -534,5 +555,39 @@
         }
       ]
     }
-  ]
+  ,
+    {
+      "level": 6,
+      "label": {
+        "en-UK": "level six",
+        "pl-PL": "poziom sześć"
+      },
+      "description": {
+        "en-UK": "Magic. Do not touch.",
+        "pl-PL": "Magia. Nie dotykać."
+      },
+      "elements": [
+        {
+          "x": 0.00033,
+          "y": 0.0001,
+          "imgPath": "logos/reactlogo.png",
+          "label": "React",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": 1.12,
+          "color": "#cba",
+          "imgPath": "logos/chromelogo.png",
+          "label": "chrome",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ]
+    }]
 }
