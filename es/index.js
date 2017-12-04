@@ -5,6 +5,7 @@
 import Journey from './journey';
 import UI from './ui';
 import FirebaseConfig from './firebase-config';
+import firebase from 'firebase';
 
 import $ from 'jquery';
 import Hammer from 'hammerjs';
@@ -36,6 +37,58 @@ Math.easeInOutQuad = function (t, b, c, d) {
  */
 $(document).ready(function() {
 
+
+  if ('serviceWorker' in navigator) {
+    registerServiceWorker();
+  }
+
+  function registerServiceWorker() {
+
+    navigator.serviceWorker.getRegistration('/').then(function (registrationCheckObject) {
+      console.log(registrationCheckObject);
+
+      if (!registrationCheckObject) {
+        navigator.serviceWorker.register('/service-worker.js', {scope: "/"}).then(function (registrationInstallObject) {
+          navigator.serviceWorker.ready.then(
+            (serviceWorkerRegistration) => {
+              window.location.reload(true);
+            }
+          );
+        }, function (err) {
+          console.info('ServiceWorker registration failed: ', err);
+        });
+
+      } else {
+        registrationCheckObject.addEventListener('updatefound', () => {
+          navigator.serviceWorker.register('/service-worker.js', {scope: "/"}).then(function (registrationInstallObject) {
+
+            document.querySelector('#sw-update-toast').className += " show";
+
+            document.querySelector('#update-sw').addEventListener('click', () => {
+              navigator.serviceWorker.controller.postMessage("new-version");
+
+              window.location.reload(true);
+            });
+
+          });
+
+        }, function (err) {
+          console.info('ServiceWorker registration failed: ', err);
+        });
+      }
+
+    });
+
+    navigator.serviceWorker.onmessage = function (evt) {
+
+      let message = JSON.parse(evt.data);
+
+      if (message && message.type === "reload") {
+        window.location.reload(true);
+      }
+    }
+
+  }
 
   app.ui = new UI({
     onDescriptionChange: updateDescription

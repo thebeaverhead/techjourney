@@ -1,63 +1,85 @@
-let cacheName = "0.0.4";
+let cacheName = "0.0.1";
 
-let filesToCache = [
-  './',
-  './style.css',
-  './index.html',
-  './logo-tbh-red.svg',
-  './data.json',
-  './bundle.js',
+const sendMessage = (message) => {
+  return self.clients.matchAll().then(function (clients) {
+    clients.forEach(function (client) {
+      client.postMessage(JSON.stringify(message));
+    });
+  });
+};
 
-  './fonts/Roboto-Light.ttf',
-  './fonts/Roboto-Regular.ttf',
-  './fonts/Roboto-Bold.ttf',
-
-  './fonts/MaterialIcons-Regular.eot',
-  './fonts/MaterialIcons-Regular.ttf',
-  './fonts/MaterialIcons-Regular.woff',
-  './fonts/MaterialIcons-Regular.woff2',
-
-  './logos/springlogo.png',
-  './logos/reactlogo.png',
-  './logos/phplogo.png',
-  './logos/jslogo.png',
-  './logos/chromelogo.png',
-];
-
-self.addEventListener('install', function(e) {
-  console.log('[ServiceWorker] Install');
+self.addEventListener('install', function(evt) {
 
   self.skipWaiting();
 
-  e.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      console.log('[ServiceWorker] Caching app shell');
-      return cache.addAll(filesToCache);
-    })
+  evt.waitUntil(
+    caches.open(cacheName)
   );
 });
 
+self.addEventListener('message', function(event){
 
-self.addEventListener('activate', function(e) {
-  console.log('[ServiceWorker] Activate');
-  e.waitUntil(
-    caches.keys().then(function(keyList) {
-      return Promise.all(keyList.map(function(key) {
-        if (key !== cacheName) {
-          //console.log('[ServiceWorker] Removing old cache', key);
-          return caches.delete(key);
+  if (event.data === "new-version") {
+    caches.keys().then((keyList) => {
+      keyList.forEach((value, index) => {
+        if (value !== cacheName) {
+          caches.delete(value);
         }
-      }));
+      });
+    });
+  }
+
+  if (event.data === "reload") {
+    sendMessage({
+      type: "reload"
     })
-  );
-  return self.clients.claim();
+  }
+
 });
 
-self.addEventListener('fetch', function(e) {
-  //console.log('[ServiceWorker] Fetch', e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
-    })
-  );
+
+self.addEventListener('fetch', function(evt) {
+  evt.respondWith(fromCache(evt.request));
+
+  if (navigator.onLine) {
+    evt.waitUntil(
+      update(evt.request)
+      .then(refresh)
+    );
+  }
 });
+
+
+function fromCache(request) {
+  return caches.open(cacheName).then(function (cache) {
+    return caches.match(request).then(function(response) {
+      return response || fetch(request);
+    })
+  });
+}
+
+function update(request) {
+  return caches.open(cacheName).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response.clone()).then(function () {
+        return response;
+      });
+    });
+  });
+}
+
+function refresh(response) {
+
+  return self.clients.matchAll().then(function (clients) {
+    clients.forEach(function (client) {
+
+      let message = {
+        type: 'refresh',
+        url: response.url,
+        eTag: response.headers.get('ETag')
+      };
+
+      client.postMessage(JSON.stringify(message));
+    });
+  });
+}
