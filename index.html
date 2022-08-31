@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+  <meta charset="utf-8">
+  <title>Stack Overview</title>
+
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Take a dive into technology stack. A collection of most of the modern technologies, grouped into layers.">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="https://stackoverview.thebeaverhead.com/">
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="images/icon-128x128.png" type="image/x-icon"/>
+
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Stack Overview">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Stack Overview">
+  <link rel="icon sizes=192x192" href="/images/icon-192x192.png">
+  <link rel="apple-touch-icon" href="/images/icon-152x152.png">
+  <meta name="msapplication-TileImage" content="/images/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#fff">
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="theme-color" content="#811519">
+  <meta property="og:title" content="Stack Overview">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://stackoverview.thebeaverhead.com/images/icon-192x192.png">
+  <meta property="og:url" content="https://stackoverview.thebeaverhead.com/">
+  <meta property="og:description" content="Take a dive into technology stack. A collection of most of the modern technologies, grouped into layers.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://stackoverview.thebeaverhead.com/">
+  <meta name="twitter:title" content="Stack Overview">
+  <meta name=twitter:description" content="Take a dive into technology stack. A collection of most of the modern technologies, grouped into layers.">
+  <meta name="twitter:image" content="https://stackoverview.thebeaverhead.com/images/icon-192x192.png">
+  <meta name="twitter:creator" content="@TheBeaverhead">
+
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+
+
+</head>
+
+<body>
+
+
+  <div class="info-container">
+    <div class="about">
+      <h3 id="info-title" class="fade" >Technology Stack Overview</h3>
+      <p id="info-description" class="fade" ></p>
+      <!--<form>
+        <div id="submit-error" class="newsletter-info error">No luck :/ Ensure you are online and try again.</div>
+        <div id="submit-success" class="newsletter-info">All right! We'll keep in touch!</div>
+
+        <input class="fade" id="email" type="email" placeholder="Your email"/>
+        <button class="fade" id="submit">Submit</button>
+
+      </form>-->
+    </div>
+  </div>
+
+
+  <div class="welcome" id="welcome">
+    <div>
+      <h1 class="fade" id="welcomeScreen-title">Take a dive into technology stack</h1>
+      <h4 class="fade" id="welcomeScreen-subtitle">Pinch, zoom or scroll to move around</h4>
+      <p>
+        <button type="button" id="start">
+          <i class="material-icons">play_arrow</i>
+        </button>
+      </p>
+    </div>
+    <div class="toast" id="sw-update-toast">
+      <p>There is a new version of app.</p>
+      <p>Click <a href="#" id="update-sw">here</a> to update.</p>
+    </div>
+  </div>
+
+  <div id="app" class="app">
+    <canvas id="cvs" width="600" height="600"></canvas>
+  </div>
+
+
+  <div class="info-block ">
+    <div class="i18n-block">
+      <button type="button" class="lang-btn" value="en-UK">EN</button> |
+      <button type="button" class="lang-btn" value="pl-PL">PL</button>
+    </div>
+    <button type="button" id="info">
+      <i class="material-icons">info_outline</i>
+    </button>
+    <button type="button" id="share">
+      <i class="material-icons">share</i>
+    </button>
+    <div class="share-container">
+
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_google_plus"></a>
+        <a class="a2a_button_email"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_wykop"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.linkname = "Stack Overview";
+        a2a_config.linkurl = "https://stackoverview.thebeaverhead.com";
+        a2a_config.onclick = 1;
+      </script>
+      <script async src="/lib/addtoany.js"></script>
+      <!-- AddToAny END -->
+    </div>
+  </div>
+
+  <div class="level-description-block fade">
+    <div class="content">
+      <h3 id="levelTitle"></h3>
+      <p id="levelDesc"></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="http://thebeaverhead.com" title="Link to The Beaverhead homepage.">
+      <img src="logo-tbh-red.svg" title="The Beaverhead"/>
+    </a>
+  </div>
+
+
+  <div class="debug">
+    <div>
+      <label for="levelRange">Level range</label>
+      <input type="number" value="500" id="levelRange"/>
+    </div>
+    <div>
+      <label for="levelThreshold">Level threshold</label>
+      <input type="number" value="50" id="levelThreshold"/>
+    </div>
+    <div>
+      <label for="zoomFactor">Zoom factor</label>
+      <input type="number" value="0.45" id="zoomFactor"/>
+    </div>
+    <div>
+      <label for="imgResizeFactor">Image resize factor</label>
+      <input type="number" value="0.001" id="imgResizeFactor"/>
+    </div>
+    <div>
+      <label for="speedFactor">Speed factor</label>
+      <input type="number" value="0.2" id="speedFactor"/>
+    </div>
+    <div>
+      <input type="checkbox" id="showFrame"/>
+      <label for="showFrame">Show frame</label>
+    </div>
+    <div>
+      <input type="checkbox" id="showItemPts"/>
+      <label for="showItemPts">Show Item points</label>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="bundle.js"></script>
+
+</body>
+</html>
+
+
+
+

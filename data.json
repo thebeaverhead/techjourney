@@ -1,0 +1,593 @@
+{
+  "i18n": {
+    "welcomeScreen": {
+      "title": {
+        "en-UK": "Take a dive into technology stack",
+        "pl-PL": "Daj nura w głąb stosu technologicznego"
+      },
+      "subtitle": {
+        "en-UK": "Pinch, zoom or scroll to move around",
+        "pl-PL": "Powiększ lub przewiń,  aby poruszać się między poziomami"
+      }
+    },
+    "info": {
+      "title": {
+        "en-UK": "Technology Stack Overview",
+        "pl-PL": "Przegląd stosu technologicznego"
+      },
+      "description": {
+        "en-UK": "An enormous number of new software technologies come to see the light, it is easy to confuse them with <a href=\"https://pixelastic.github.io/pokemonorbigdata/\" target=\"_blank\">pokemons</a>.<br/>We've collected most of the modern technologies and grouped them into layers. These layers represent the level of stack these technologies belong to and visually locate them as a dependency of other layers top or down related.<br/>If you feel we've missed something, have a <a href=\"https://github.com/thebeaverhead/techjourney\" target=\"_blank\">look at git of this project</a>. Feel free to report new technology as an issue or contribute with a pull request.<br/>You also may wish to leave your email here, well let you know once we do a significant update of the technology stack.",
+        "pl-PL": "Coraz większa ilość technologi wychodzi na światło dzienne, bardzo łatwo je pomylić z pokemonami <a href=\"https://pixelastic.github.io/pokemonorbigdata/\" target=\"_blank\">pokemons</a>.<br/>Zebraliśmy większość nowych technologii i pogrupowaliśmy je warstwami. Warstwy te reprezentują poziom w stosie technologicznym, do którego te technologie należą i wizualizują ich zależności z innymi warstwami poniżej i powyżej.<br/>Jeśli uważasz, że coś pominęliśmy, <a href=\"https://github.com/thebeaverhead/techjourney\" target=\"_blank\">zerknij na repozytorium git tego projektu</a>. Zgłoś nowe technologie jako \"issue\" albo wesprzyj projekt pull requestem.<br/>Możesz także zostawić swój email tutaj, poinformujemy Ciebie, gdy w znaczący sposób zaktualizujemy przegląd stosu."
+      },
+      "email": {
+        "en-UK": "Your email",
+        "pl-PL": "Twój email"
+      },
+      "submit": {
+        "en-UK": "Submit",
+        "pl-PL": "Zapisz się"
+      }
+    }
+  },
+  "levels": [
+    {
+      "level": 0,
+      "label": {
+        "en-UK": "Host",
+        "pl-PL": "Host"
+      },
+      "description": {
+        "en-UK": "This is you. This level represents an entry point of this presentation. Everything below can be considered as front-end and what's above- backend. Host (endpoint) can be anything from computer through AGD equipment, vehicles or even a teapot!",
+        "pl-PL": "To jesteś Ty. Ten poziom prezentuje początek prezentacji. Wszystko co jest poniżej może być traktowane jako front-end a to co powyżej jako backend. Hostem (końcówką) może być wszystko poczynając od komputera przez sprzęt AGD, pojazdy a kończąc na czajniku!"
+      },
+      "elements": [
+        {
+          "x": 0.00033,
+          "y": 0.0001,
+          "imgPath": "images/host/computer.png",
+          "label": "Computer",
+          "description": {
+            "en-UK": "A computer .....",
+            "pl-PL": "Komputer..."
+          }
+        },
+        {
+          "x": 100.53,
+          "y": -10.1,
+          "color": "#cba",
+          "imgPath": "images/host/smartphone.png",
+          "label": "Smartphone",
+          "description": {
+            "en-UK": "A smartphone....",
+            "pl-PL": "Smartphone..."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": 1.12,
+          "color": "#cba",
+          "imgPath": "images/host/tablet.png",
+          "label": "Tablet",
+          "description": {
+            "en-UK": "A tablet....",
+            "pl-PL": "Tablet..."
+          }
+        },
+        {
+          "x": -270.013,
+          "y": 15.12,
+          "color": "#cba",
+          "imgPath": "images/host/watch.png",
+          "label": "Smartwach",
+          "description": {
+            "en-UK": "A smartwach....",
+            "pl-PL": "Zegarek..."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": -3.12,
+          "color": "#cba",
+          "imgPath": "images/host/teapot.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": -90.013,
+          "y": -5.12,
+          "color": "#cba",
+          "imgPath": "images/host/vehicle.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": 230.013,
+          "y": 40.12,
+          "color": "#cba",
+          "imgPath": "images/host/public_transport.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": 140.013,
+          "y": -123.12,
+          "color": "#cba",
+          "imgPath": "images/host/agd.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": 90.013,
+          "y": 123.12,
+          "color": "#cba",
+          "imgPath": "images/host/cup.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": 0.0001,
+          "y": 0.0009,
+          "color": "#cba",
+          "imgPath": "images/host/laptop.png",
+          "label": "Teapot",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        },
+        {
+          "x": -0.2252234,
+          "y": 0.9234,
+          "color": "#cba",
+          "imgPath": "images/host/tv.png",
+          "label": "TV",
+          "description": {
+            "en-UK": "A teapot....",
+            "pl-PL": "Teapot..."
+          }
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": {
+        "en-UK": "Operating System",
+        "pl-PL": "System operacyjny"
+      },
+      "description": {
+        "en-UK": "The kernel is free to ignore the advice.",
+        "pl-PL": "Jądro może odrzucić radę."
+      },
+      "elements": [
+        {
+          "x": 10.33,
+          "y": 0.1,
+          "imgPath": "images/os/android.png",
+          "label": "Android",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },{
+          "x": -10.3,
+          "y": 10.0001,
+          "imgPath": "images/os/ios.png",
+          "label": "iOS",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },{
+          "x": -20.4,
+          "y": -10,
+          "imgPath": "images/os/osx.png",
+          "label": "macOS X",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },{
+          "x": 3.33,
+          "y": -8.0001,
+          "imgPath": "images/os/ubuntu.png",
+          "label": "Ubuntu",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },{
+          "x": 0.33,
+          "y": -0.0001,
+          "imgPath": "images/os/win10.png",
+          "label": "Windows",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        }]
+    },
+    {
+      "level": 2,
+      "label": {
+        "en-UK": "Web Browser",
+        "pl-PL": "Przeglądarka"
+      },
+      "description": {
+        "en-UK": "Short forms of external names for systems with brain-damaged linkers.",
+        "pl-PL": "Skrócone formy nazw zewnętrznych dla systemów z linkerami upośledzonymi umysłowo."
+      },
+      "elements": [
+        {
+          "x": -10.913,
+          "y": 0.0023,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/chromium.png",
+          "label": "Chromium",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 40.913,
+          "y": -70.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/coccoc.png",
+          "label": "Coc Coc",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -10.913,
+          "y": -50.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/edge.png",
+          "label": "Microsoft Edge",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 30.913,
+          "y": 34.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/explorer.png",
+          "label": "Internet Explorer",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -100.913,
+          "y": -1.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/firefox.png",
+          "label": "Mozilla Firefox",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -1.913,
+          "y": 20.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/neon.png",
+          "label": "Opera Neon",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 100.13,
+          "y": -0.012,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/opera.png",
+          "label": "Opera",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -1.913,
+          "y": -1.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/palemoon.png",
+          "label": "Pale Moon",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -40.913,
+          "y": -0.012,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/safari.png",
+          "label": "Safari",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -19.913,
+          "y": -32.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/sogou.png",
+          "label": "Sogou",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -100.013,
+          "y": 70.12,
+          "color": "#cba",
+          "imgPath": "images/webbrowser/uc.png",
+          "label": "UC Browser",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 4.0003,
+          "y": 10.0001,
+          "imgPath": "images/webbrowser/yandex.png",
+          "label": "Yandex Browser",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        }]
+    },
+    {
+      "level": 3,
+      "label": {
+        "en-UK": "Application framework",
+        "pl-PL": "Framework aplikacji"
+      },
+      "description": {
+        "en-UK": "This is not the function you are interested in.",
+        "pl-PL": "To nie jest funckja, której szukasz."
+      },
+      "elements": [
+        {
+          "x": -50.013,
+          "y": 100.12,
+          "color": "#cba",
+          "imgPath": "images/js/meteor.png",
+          "label": "Meteor",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -140.013,
+          "y": 10.12,
+          "color": "#cba",
+          "imgPath": "images/js/jquery.png",
+          "label": "jQuery",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 0.23,
+          "y": -1.22,
+          "color": "#cba",
+          "imgPath": "images/js/ember.png",
+          "label": "Ember.js",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 10.013,
+          "y": -16.12,
+          "color": "#cba",
+          "imgPath": "images/js/vue.png",
+          "label": "Vue.js",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": -10.013,
+          "y": -30.12,
+          "color": "#cba",
+          "imgPath": "images/js/angular.png",
+          "label": "AngularJS",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ,{
+          "x": 0.00033,
+          "y": 0.0001,
+          "imgPath": "images/js/react.png",
+          "label": "React",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": 1.12,
+          "color": "#cba",
+          "imgPath": "images/js/backbone.png",
+          "label": "Backbone.js",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": {
+        "en-UK": "level four",
+        "pl-PL": "poziom cztery"
+      },
+      "description": {
+        "en-UK": "Autogenerated, do not edit. All changes will be undone.",
+        "pl-PL": "Wygenerowane automatycznie, nie edytować. Wszystkie zmiany zostaną nadpisane."
+      },
+      "elements": [
+        {
+          "x": 0.00033,
+          "y": 0.0001,
+          "imgPath": "logos/reactlogo.png",
+          "label": "React",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": 1.12,
+          "color": "#cba",
+          "imgPath": "logos/chromelogo.png",
+          "label": "chrome",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "label": {
+        "en-UK": "level five",
+        "pl-PL": "poziom pięć"
+      },
+      "description": {
+        "en-UK": "Should neve happen.",
+        "pl-PL": "Nigdy nie powinno mieć miejsca."
+      },
+      "elements": [
+        {
+          "x": 0.00033,
+          "y": 0.0001,
+          "imgPath": "logos/reactlogo.png",
+          "label": "React",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": 1.12,
+          "color": "#cba",
+          "imgPath": "logos/chromelogo.png",
+          "label": "chrome",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ]
+    },
+    {
+      "level": 7,
+      "label": {
+        "en-UK": "level seven",
+        "pl-PL": "poziom siedem"
+      },
+      "description": {
+        "en-UK": "Replaces with spaces the braces in cases where braces in places cause stasis.",
+        "pl-PL": "Zamienia spacjami klamry w przypadku, gdy klamry są w miejscach tworząc zastój."
+      },
+      "elements": [
+        {
+          "x": 0.00033,
+          "y": 0.0001,
+          "imgPath": "logos/reactlogo.png",
+          "label": "React",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": 1.12,
+          "color": "#cba",
+          "imgPath": "logos/chromelogo.png",
+          "label": "chrome",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ]
+    }
+  ,
+    {
+      "level": 6,
+      "label": {
+        "en-UK": "level six",
+        "pl-PL": "poziom sześć"
+      },
+      "description": {
+        "en-UK": "Magic. Do not touch.",
+        "pl-PL": "Magia. Nie dotykać."
+      },
+      "elements": [
+        {
+          "x": 0.00033,
+          "y": 0.0001,
+          "imgPath": "logos/reactlogo.png",
+          "label": "React",
+          "description": {
+            "en-UK": "A JavaScript library for building user interfaces.",
+            "pl-PL": "Biblioteka stworzona w JavaScript do budowy interface'ów użytkownika."
+          }
+        },
+        {
+          "x": -1.013,
+          "y": 1.12,
+          "color": "#cba",
+          "imgPath": "logos/chromelogo.png",
+          "label": "chrome",
+          "description": {
+            "en-UK": "One fast, simple, and secure browser for all your devices.",
+            "pl-PL": "Szybka, bezpieczna i bezpłatna przeglądarka, stworzona na miarę współczesnego internetu."
+          }
+        }
+      ]
+    }]
+}
