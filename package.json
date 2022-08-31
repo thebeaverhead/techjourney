@@ -12,7 +12,6 @@
     "bootstrap": "^3.3.7",
     "classnames": "^2.1.3",
     "concurrently": "^3.1.0",
-    "firebase": "^4.7.0",
     "hammerjs": "^2.0.8",
     "isemail": "^3.0.0",
     "jquery": "^3.1.1",
@@ -40,11 +39,11 @@
     "watchify": "^3.9.0"
   },
   "scripts": {
-    "watch-css": "less-watch-compiler less ./webroot style.less",
-    "build-css": "lessc --clean-css=\"--s1 --advanced --compatibility=ie8\" ./less/style.less ./webroot/style.css",
-    "build-babel": "browserify ./es/index.js -v -t babelify -o ./webroot/bundle.js && babel ./webroot/bundle.js -v -o ./webroot/bundle-compiled.js --source-maps",
-    "build-js": "browserify ./webroot/bundle-compiled.js -g [ envify --NODE_ENV production ] -g uglifyify -p bundle-collapser/plugin | uglifyjs --compress --mangle > ./webroot/bundle-compiled.min.js",
-    "build-dev": "node_modules/.bin/watchify --poll=500 ./es/index.js -v -t babelify -o ./webroot/bundle.js",
+    "watch-css": "less-watch-compiler less ./dist style.less",
+    "build-css": "lessc --clean-css=\"--s1 --advanced --compatibility=ie8\" ./less/style.less ./dist/style.css",
+    "build-babel": "browserify ./es/index.js -v -t babelify -o ./dist/bundle.js && babel ./dist/bundle.js -v -o ./dist/bundle-compiled.js --source-maps",
+    "build-js": "browserify ./dist/bundle-compiled.js -g [ envify --NODE_ENV production ] -g uglifyify -p bundle-collapser/plugin | uglifyjs --compress --mangle > ./dist/bundle-compiled.min.js",
+    "build-dev": "node_modules/.bin/watchify --poll=500 ./es/index.js -v -t babelify -o ./dist/bundle.js",
     "build-prod": "npm-run-all -s build-css build-babel build-js",
     "start": "concurrently -k \"npm run build-dev\" \"npm run watch-css\""
   },

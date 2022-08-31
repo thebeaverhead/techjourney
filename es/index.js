@@ -4,8 +4,8 @@
 
 import Journey from './journey';
 import UI from './ui';
-import FirebaseConfig from './firebase-config';
-import firebase from 'firebase';
+//import FirebaseConfig from './firebase-config';
+//import firebase from 'firebase';
 
 import $ from 'jquery';
 import Hammer from 'hammerjs';
@@ -94,7 +94,7 @@ $(document).ready(function() {
     onDescriptionChange: updateDescription
   });
 
-  firebase.initializeApp(FirebaseConfig);
+  //firebase.initializeApp(FirebaseConfig);
 
   const canvas = document.getElementById('cvs');
 
@@ -395,7 +395,7 @@ $(document).ready(function() {
 
       $('#submit').prop('disabled', true);
 
-      const database = firebase.database();
+      //const database = firebase.database();
 
       database.goOnline();
       database.ref("/newsletter/"+database.ref("/newsletter").push().key)
